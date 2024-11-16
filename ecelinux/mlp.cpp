@@ -6,7 +6,7 @@
 #include <hls_stream.h>
 #include <iostream>
 #include "mlp.h"
-#include <nlohmann/json.hpp>
+#include "mlp_weights.cpp"
 
 //-----------------------------------
 // dut function (top module)
@@ -60,8 +60,46 @@ void mlp(input_type input, output_type output) {
     layer_input[i] = input[i];
   }
 
-  //Initialize weights and biases
-  load_weights_biases();
+  //Initialize weights
+  for (int layer = 0; layer < MAX_LAYERS; layer++) {
+      for (int i = 0; i < MAX_NEURONS; i++) {
+          for (int j = 0; j < MAX_INPUTS; j++) {
+              // Load weights for each layer
+              if (layer == 0) {
+                  weights[layer][i][j] = W0[i][j];  
+              }
+              else if (layer == 1) {
+                  weights[layer][i][j] = W2[i][j];  
+              }
+              else if (layer == 2) {
+                  weights[layer][i][j] = W4[i][j]; 
+              }
+              else if (layer == 3) {
+                  weights[layer][i][j] = W6[i][j]; 
+              }
+              else if (layer == 4) {
+                  weights[layer][i][j] = W8[i][j]; 
+              }
+          }
+
+          // Load biases for each layer
+          if (layer == 0) {
+              biases[layer][i] = B1[i];  
+          }
+          else if (layer == 1) {
+              biases[layer][i] = B3[i];  
+          }
+          else if (layer == 2) {
+              biases[layer][i] = B5[i]; 
+          }
+          else if (layer == 3) {
+              biases[layer][i] = B7[i]; 
+          }
+          else if (layer == 4) {
+              biases[layer][i] = B9[i]; 
+          }
+      }
+  }
 
   //Forward passes
   for (int layer = 0; layer <  MAX_LAYERS; layer++) {

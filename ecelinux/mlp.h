@@ -6,7 +6,6 @@
 #define MLP_H
 
 #include <hls_stream.h>
-
 #include "typedefs.h"
 
 //Configuration parameters (NUMBERS ARE CURRENTLY RANDOM)
