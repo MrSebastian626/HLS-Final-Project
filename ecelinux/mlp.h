@@ -8,16 +8,7 @@
 #include <hls_stream.h>
 #include "typedefs.h"
 
-//Configuration parameters (NUMBERS ARE CURRENTLY RANDOM)
-#define MAX_LAYERS = 1; // Maximum number of layers in MLP
-#define MAX_NERUONS = 40; // Maximum number of neurons in  a layer
-#define MAX_INPUTS = 40; // Inputs to the first layer 
 
-
-//Initialize weights, biases and layer_sizes
-extern const double weights[MAX_LAYERS][MAX_NERUONS][MAX_INPUTS];
-extern const double biases[MAX_LAYERS][MAX_NERUONS];
-extern const int layer_sizes[MAX_LAYERS + 1];
 
 
 
@@ -29,11 +20,11 @@ void dut (
 
 //Load weights
 
-
 // Top function for CORDIC
 void mlp (
-    input_type input,
-    output_type output
+    data_t input[N_INPUTS], data_t &mean_output, data_t &variance
 );
+
+void mlp_monte_carlo(data_t input[N_INPUTS], data_t &mean, data_t &variance);
 
 #endif
