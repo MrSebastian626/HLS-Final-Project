@@ -88,7 +88,6 @@ int main() {
 
   // Close input file for the testing set
   myfile.close();
-
   
 
   // Close output file

@@ -31,7 +31,7 @@ const data_t w2[N_HIDDEN0][N_HIDDEN1] = {
 };
 
 const data_t b2[N_HIDDEN1] = {
-#include "data/b2.h
+#include "data/b2.h"
 };
 
 const data_t w3[N_HIDDEN1][N_HIDDEN2] = {
@@ -58,12 +58,12 @@ const data_t b5[N_OUTPUTS] = {
 #include "data/b5.h"
 };
 
-// Dropout masks (precomputed for each Monte Carlo run)
-const bool dropout_masks[NUM_MONTE_CARLO_RUNS][N_HIDDEN] = {
-#include "data/dropout_masks.h"
-};
+// // Dropout masks (precomputed for each Monte Carlo run)
+// const bool dropout_masks[NUM_MONTE_CARLO_RUNS][N_HIDDEN] = {
+// #include "data/dropout_masks.h"
+// };
 
 // Experimental data
-const data_t outputs[NUM_MONTE_CARLO_RUNS];
+data_t outputs[NUM_MONTE_CARLO_RUNS];
 
 #endif

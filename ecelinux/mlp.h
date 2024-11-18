@@ -2,11 +2,12 @@
 // mlp.h
 //=========================================================================
  
-#ifndef MLP_H
-#define MLP_H
+#ifndef MLP_XCEL_H
+#define MLP_XCEL_H
 
 #include <hls_stream.h>
 #include "typedefs.h"
+#include "model.h"
 
 
 
@@ -18,10 +19,9 @@ void dut (
     hls::stream<bit32_t> &strm_out
 );
 
-//Load weights
 
 // Top function for CORDIC
-void mlp (
+void mlp_xcel (
     data_t input[N_INPUTS], data_t &mean_output, data_t &variance
 );
 

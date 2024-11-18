@@ -16,16 +16,16 @@ CFLAGS = -g -I${VHLS_INC}
 
 all: csim
 
-csim: cordic.cpp cordic_test.cpp
-	@echo "Compiling & simulating CORDIC on amdpool ..."
-	g++ ${CFLAGS} $^ -o cordic
-	./cordic
+csim: mlp.cpp mlp_test.cpp
+	@echo "Compiling & simulating MLP on amdpool ..."
+	g++ ${CFLAGS} $^ -o mlp
+	./mlp
 
 bitstream: 
-	@echo "Synthesizing CORDIC and creating bitstream on amdpool ..."
+	@echo "Synthesizing MLP and creating bitstream on amdpool ..."
 	vivado_hls  -f run.tcl
 	./run_bitstream.sh
 
 clean:
-	rm -rf cordic *.dat *.prj *.log
+	rm -rf mlp *.dat *.prj *.log
 	rm -rf zedboard_project* xillydemo.bit
