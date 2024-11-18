@@ -12,6 +12,7 @@
 #include "mlp.h"
 #include "timer.h"
 #include "typedefs.h"
+#include "data/test_data.cpp"
 
 // Define a structured input for the MLP
 // struct mlp_input {
@@ -63,10 +64,15 @@ int main() {
     dut(mlp_in, mlp_out);
 
     // Read result
-    data_t[2] MLP_response = digitrec_out.read();
+    MeanVariance output_mv = mlp_out.read();
 
-    data_t mean = MLP_response[0];
-    data_t variance = MLP_response[1];
+    // data_t MLP_response[2] = mlp_out.read();
+
+    // data_t mean = MLP_response[0];
+    // data_t variance = MLP_response[1];
+
+    data_t mean = output_mv.mean;
+    data_t variance = output_mv.variance;
 
     num_test_insts++;
 

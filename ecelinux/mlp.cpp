@@ -8,12 +8,13 @@
 #include "mlp.h"
 #include "layer.h"
 
+
 //-----------------------------------
 // dut function (top module)
 //-----------------------------------
 // @param[in]  : strm_in - input stream
 // @param[out] : strm_out - output stream 
-void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out) {
+void dut(hls::stream<data_t> &strm_in, hls::stream<2*data_t> &strm_out) {
   data_t input[N_INPUTS];
   data_t mean_output;
   data_t variance_output;
@@ -27,8 +28,10 @@ void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out) {
   mlp_xcel(input, mean_output, variance_output);
 
   // Write outputs to stream
-  strm_out.write(mean_output);
-  strm_out.write(variance_output);
+  MeanVariance mv;
+  mv.mean = mean_output;
+  mv.variance = variance_output;
+  strm_out.write(mv);
 }
 
 //-----------------------------------

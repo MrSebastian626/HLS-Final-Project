@@ -17,6 +17,9 @@ const int N_HIDDEN3 = 16;                 // Number of hidden units
 const int N_OUTPUTS = 1;                 // Number of outputs
 const int NUM_MONTE_CARLO_RUNS = 100;    // Number of Monte Carlo simulations
 
+const int x_num_rows = 150; //Testing number of rows
+const int x_num_cols = 9; //Testing number of cols
+
 // Weights and biases
 const data_t w1[N_INPUTS][N_HIDDEN0] = {
 #include "data/w1.h"
