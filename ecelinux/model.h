@@ -67,6 +67,6 @@ const data_t b5[N_OUTPUTS] = {
 // };
 
 // Experimental data
-extern data_t outputs[NUM_MONTE_CARLO_RUNS];
+static data_t outputs[NUM_MONTE_CARLO_RUNS];
 
 #endif
