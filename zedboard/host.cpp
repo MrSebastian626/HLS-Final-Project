@@ -1,37 +1,20 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<unistd.h>
-#include<fcntl.h>
-#include<math.h>
-#include<assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <math.h>
+#include <assert.h>
 
-#include<iostream>
-#include<fstream>
+#include <iostream>
+#include <fstream>
 
-#include "host.h"
+#include "typedefs.h"
 #include "timer.h"
-
-//--------------------------------------
-// Compute absolute value of a double
-//--------------------------------------
-double abs_double(double var)
-{
-    return ( var < 0 ) ? -var : var;
-}
-
-//--------------------------------------
-// Compute absolute value of a double
-//--------------------------------------
-double RMSE(double total_error)
-{
-    return sqrt( total_error / (NUM_DEGREE - 1) );
-}
 
 //--------------------------------------
 // main function
 //--------------------------------------
-int main(int argc, char** argv)
-{
+int main(int argc, char **argv) {
   // Open channels to the FPGA board.
   // These channels appear as files to the Linux OS
   int fdr = open("/dev/xillybus_read_32", O_RDONLY);
@@ -39,108 +22,90 @@ int main(int argc, char** argv)
 
   // Check that the channels are correctly opened
   if ((fdr < 0) || (fdw < 0)) {
-    fprintf (stderr, "Failed to open Xillybus device channels\n");
-    exit(-1);
+    fprintf(stderr, "Failed to open Xillybus device channels\n");
+    return -1;
   }
 
-  // sin output
-  cos_sin_type s = 0;
-  // cos output
-  cos_sin_type c = 0;
-  // radian input
-  double radian; 
-  // sin & cos calculated by math.h
-  double m_s = 0.0, m_c = 0.0;
+  // Read input file for the testing set
+  std::string line;
+  std::ifstream myfile("data/testing_set.dat");
 
-  // Error terms
-  double err_ratio_sin = 0.0;
-  double err_ratio_cos = 0.0;
-  double accum_err_sin = 0.0;
-  double accum_err_cos = 0.0;
+  // Number of test instances
+  const int N = 180;
 
-  // arrays to store the output
-  double c_array[NUM_DEGREE];
-  double s_array[NUM_DEGREE];
+  // Arrays to store test data and expected results
+  digit inputs[N];
+  int expecteds[N];
+  int results[N];
+
+  // Timer
+  Timer timer("digitrec FPGA");
 
   int nbytes;
-  Timer timer("CORDIC fpga");
+  int error = 0;
+  int num_test_insts = 0;
+  bit32_t interpreted_digit;
+
+  if (!myfile.is_open()) {
+    std::cout << "Unable to open file for the testing set!" << std::endl;
+    return 1;
+  }
+
+  //--------------------------------------------------------------------
+  // Read data from the input file into two arrays
+  //--------------------------------------------------------------------
+  for (int i = 0; i < N; ++i) {
+    assert(std::getline(myfile, line));
+    // Read handwritten digit input
+    std::string hex_digit = line.substr(2, line.find(",") - 2);
+    digit input_digit = hexstring_to_int64(hex_digit);
+    // Read expected digit
+    int input_value = strtoul(
+        line.substr(line.find(",") + 1, line.length()).c_str(), NULL, 10);
+
+    // Store the digits into arrays
+    inputs[i] = input_digit;
+    expecteds[i] = input_value;
+  }
 
   timer.start();
 
-  //----------------------------------------------------------------------
-  // In each iteration send one value to the module and read the result
-  //----------------------------------------------------------------------
-  for (int i = 1; i < NUM_DEGREE; ++i) {
-    radian = i * M_PI / 180;
+  //--------------------------------------------------------------------
+  // Add your code here to communicate with the hardware module and
+  // write the outputs to results[]
+  //--------------------------------------------------------------------
+  for (int i = 0; i<N;i++){
+    digit dig = inputs[i];
+    bit64_t input;
+    input(input.length()-1,0) = dig(dig.length()-1,0);
 
-    // Convert double value to fixed-point representation
-    theta_type theta(radian);
-
-    // Convert fixed-point to int64
-    bit64_t theta_i;
-    theta_i(theta.length()-1,0) = theta(theta.length()-1,0);
-    int64_t input = theta_i;
-
-    // Send bytes through the write channel
-    // and assert that the right number of bytes were sent
-    nbytes = write (fdw, (void*)&input, sizeof(input));
-    assert (nbytes == sizeof(input));
-
-    // Receive bytes through the read channel
-    // and assert that the right number of bytes were recieved
-    int64_t c_out, s_out;
-    nbytes = read (fdr, (void*)&c_out, sizeof(c_out));
-    assert (nbytes == sizeof(c_out));
-    nbytes = read (fdr, (void*)&s_out, sizeof(s_out));
-    assert (nbytes == sizeof(s_out));
-    
-    // Convert int64 to fixed point
-    bit64_t c_i = c_out;
-    bit64_t s_i = s_out;
-    c(c.length()-1,0) = c_i(c.length()-1,0);
-    s(s.length()-1,0) = s_i(s.length()-1,0);
-
-    // Store to array
-    c_array[i] = c;
-    s_array[i] = s;
+    nbytes = write(fdw, (void *)&input, sizeof(input));
+    assert(nbytes == sizeof(input));
+  }
+  for (int i = 0; i<N; i++){
+    bit32_t output;
+    nbytes = read(fdr, (void *)&output, sizeof(output));
+    assert(nbytes == sizeof(output));
+    results[i] = output & 0xF;
   }
   
   timer.stop();
 
-  //------------------------------------------------------------ 
-  // Check results
-  //------------------------------------------------------------ 
-  for (int i = 1; i < NUM_DEGREE; ++i) {
-    // Load the stored result
-    c = c_array[i];
-    s = s_array[i];
+  // Now count the errors
+  for (int i = 0; i < N; ++i) {
+    if (expecteds[i] != results[i])
+      error++;
 
-    // Call math lib
-    radian = i * M_PI / 180;
-    m_s = sin( radian );
-    m_c = cos( radian );
-    
-    // Calculate normalized error
-    err_ratio_sin = ( abs_double( (double)s - m_s) / (m_s) ) * 100.0;
-    err_ratio_cos = ( abs_double( (double)c - m_c) / (m_c) ) * 100.0;
-    
-    // Accumulate error ratios
-    accum_err_sin += err_ratio_sin * err_ratio_sin;
-    accum_err_cos += err_ratio_cos * err_ratio_cos;
+    num_test_insts++;
   }
 
-  //------------------------------------------------------------ 
-  // Write out root mean squared error (RMSE) of error ratios
-  //------------------------------------------------------------ 
-  // Print to screen
-  std::cout << "#------------------------------------------------\n"
-            << "Overall_Error_Sin = " << RMSE(accum_err_sin) << "\n"
-            << "Overall_Error_Cos = " << RMSE(accum_err_cos) << "\n"
-            << "#------------------------------------------------\n";
+  // Report overall error out of all testing instances
+  std::cout << "Number of test instances = " << num_test_insts << std::endl;
+  std::cout << "Overall Error Rate = " << std::setprecision(3)
+            << ((double)error / num_test_insts) * 100 << "%" << std::endl;
 
-  // Clean up
-  close(fdr);
-  close(fdw);
+  // Close input file for the testing set
+  myfile.close();
 
   return 0;
 }

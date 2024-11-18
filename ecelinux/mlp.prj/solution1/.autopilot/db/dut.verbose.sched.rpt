@@ -1,0 +1,159 @@
+
+
+================================================================
+== Vivado HLS Report for 'dut'
+================================================================
+* Date:           Sun Nov 17 21:46:17 2024
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        mlp.prj
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  | 10.00 ns | 8.702 ns |   1.25 ns  |
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+---------+---------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |      Interval     | Pipeline|
+    |   min   |   max   |    min    |    max    |   min   |   max   |   Type  |
+    +---------+---------+-----------+-----------+---------+---------+---------+
+    |  1126917|  1126917| 11.269 ms | 11.269 ms |  1126917|  1126917|   none  |
+    +---------+---------+-----------+-----------+---------+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |          |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name|   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1  |        9|        9|         1|          -|          -|     9|    no    |
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 4
+* Pipeline : 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 2 
+3 --> 4 
+4 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.76>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%empty = call i32 (...)* @_ssdm_op_SpecInterface(i16* %strm_out_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 5 'specinterface' 'empty' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%empty_35 = call i32 (...)* @_ssdm_op_SpecInterface(i16* %strm_in_V_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)"   --->   Operation 6 'specinterface' 'empty_35' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i16* %strm_in_V_V), !map !130"   --->   Operation 7 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecBitsMap(i16* %strm_out_V_V), !map !134"   --->   Operation 8 'specbitsmap' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (0.00ns)   --->   "call void (...)* @_ssdm_op_SpecTopModule([4 x i8]* @dut_str) nounwind"   --->   Operation 9 'spectopmodule' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%input_V = alloca [9 x i16], align 2" [mlp.cpp:18]   --->   Operation 10 'alloca' 'input_V' <Predicate = true> <Delay = 0.00> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 9> <RAM>
+ST_1 : Operation 11 [1/1] (1.76ns)   --->   "br label %.preheader" [mlp.cpp:23]   --->   Operation 11 'br' <Predicate = true> <Delay = 1.76>
+
+State 2 <SV = 1> <Delay = 5.95>
+ST_2 : Operation 12 [1/1] (0.00ns)   --->   "%i_0 = phi i4 [ %i, %0 ], [ 0, %.preheader.preheader ]"   --->   Operation 12 'phi' 'i_0' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 13 [1/1] (1.30ns)   --->   "%icmp_ln23 = icmp eq i4 %i_0, -7" [mlp.cpp:23]   --->   Operation 13 'icmp' 'icmp_ln23' <Predicate = true> <Delay = 1.30> <Core = "Cmp">   --->   Core 25 'Cmp' <Latency = 0> <II = 1> <Delay = 1.30> <FuncUnit> <Opcode : 'icmp'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 14 [1/1] (0.00ns)   --->   "%empty_36 = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 9, i64 9, i64 9)"   --->   Operation 14 'speclooptripcount' 'empty_36' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 15 [1/1] (1.73ns)   --->   "%i = add i4 %i_0, 1" [mlp.cpp:23]   --->   Operation 15 'add' 'i' <Predicate = true> <Delay = 1.73> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.73> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 16 [1/1] (0.00ns)   --->   "br i1 %icmp_ln23, label %1, label %0" [mlp.cpp:23]   --->   Operation 16 'br' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%zext_ln24 = zext i4 %i_0 to i64" [mlp.cpp:24]   --->   Operation 17 'zext' 'zext_ln24' <Predicate = (!icmp_ln23)> <Delay = 0.00>
+ST_2 : Operation 18 [1/1] (3.63ns)   --->   "%tmp_V_2 = call i16 @_ssdm_op_Read.ap_fifo.volatile.i16P(i16* %strm_in_V_V)" [mlp.cpp:24]   --->   Operation 18 'read' 'tmp_V_2' <Predicate = (!icmp_ln23)> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_2 : Operation 19 [1/1] (0.00ns)   --->   "%input_V_addr = getelementptr [9 x i16]* %input_V, i64 0, i64 %zext_ln24" [mlp.cpp:24]   --->   Operation 19 'getelementptr' 'input_V_addr' <Predicate = (!icmp_ln23)> <Delay = 0.00>
+ST_2 : Operation 20 [1/1] (2.32ns)   --->   "store i16 %tmp_V_2, i16* %input_V_addr, align 2" [mlp.cpp:24]   --->   Operation 20 'store' <Predicate = (!icmp_ln23)> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 16> <Depth = 9> <RAM>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "br label %.preheader" [mlp.cpp:23]   --->   Operation 21 'br' <Predicate = (!icmp_ln23)> <Delay = 0.00>
+ST_2 : Operation 22 [2/2] (0.00ns)   --->   "%call_ret_i = call fastcc { i16, i16 } @mlp_monte_carlo([9 x i16]* %input_V)" [mlp.cpp:46->mlp.cpp:28]   --->   Operation 22 'call' 'call_ret_i' <Predicate = (icmp_ln23)> <Delay = 0.00> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+
+State 3 <SV = 2> <Delay = 8.56>
+ST_3 : Operation 23 [1/2] (4.93ns)   --->   "%call_ret_i = call fastcc { i16, i16 } @mlp_monte_carlo([9 x i16]* %input_V)" [mlp.cpp:46->mlp.cpp:28]   --->   Operation 23 'call' 'call_ret_i' <Predicate = true> <Delay = 4.93> <CoreType = "Generic">   --->   Core 0 '' <Latency = 0> <II = 1> <Delay = 1.00> <Generic> <Opcode : >
+ST_3 : Operation 24 [1/1] (0.00ns)   --->   "%mean_output_V = extractvalue { i16, i16 } %call_ret_i, 0" [mlp.cpp:28]   --->   Operation 24 'extractvalue' 'mean_output_V' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 25 [1/1] (0.00ns)   --->   "%variance_output_V = extractvalue { i16, i16 } %call_ret_i, 1" [mlp.cpp:28]   --->   Operation 25 'extractvalue' 'variance_output_V' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 26 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %strm_out_V_V, i16 %mean_output_V)" [mlp.cpp:34]   --->   Operation 26 'write' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+
+State 4 <SV = 3> <Delay = 3.63>
+ST_4 : Operation 27 [1/1] (3.63ns)   --->   "call void @_ssdm_op_Write.ap_fifo.volatile.i16P(i16* %strm_out_V_V, i16 %variance_output_V)" [mlp.cpp:35]   --->   Operation 27 'write' <Predicate = true> <Delay = 3.63> <Core = "FIFO">   --->   Core 32 'FIFO' <Latency = 0> <II = 1> <Delay = 3.63> <Storage> <Opcode : 'read' 'write' 'nbread' 'nbwrite'> <Ports = 0> <Width = 16> <Depth = 0> <FIFO>
+ST_4 : Operation 28 [1/1] (0.00ns)   --->   "ret void" [mlp.cpp:36]   --->   Operation 28 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 1.77ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('i') with incoming values : ('i', mlp.cpp:23) [31]  (1.77 ns)
+
+ <State 2>: 5.96ns
+The critical path consists of the following:
+	fifo read on port 'strm_in_V_V' (mlp.cpp:24) [38]  (3.63 ns)
+	'store' operation ('store_ln24', mlp.cpp:24) of variable 'tmp.V', mlp.cpp:24 on array 'input.V', mlp.cpp:18 [40]  (2.32 ns)
+
+ <State 3>: 8.57ns
+The critical path consists of the following:
+	'call' operation ('call_ret_i', mlp.cpp:46->mlp.cpp:28) to 'mlp_monte_carlo' [43]  (4.93 ns)
+	fifo write on port 'strm_out_V_V' (mlp.cpp:34) [46]  (3.63 ns)
+
+ <State 4>: 3.63ns
+The critical path consists of the following:
+	fifo write on port 'strm_out_V_V' (mlp.cpp:35) [47]  (3.63 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

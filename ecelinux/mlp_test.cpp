@@ -8,6 +8,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include <hls_math.h>
 
 #include "mlp.h"
 #include "timer.h"
@@ -36,8 +37,8 @@ int main() {
   outfile.open("out.dat");
 
   // HLS streams for communicating with the MLP block
-  hls::stream<data_t[x_num_cols]> mlp_in;
-  hls::stream<data_t[2]> mlp_out;
+  hls::stream<data_t> mlp_in;
+  hls::stream<data_t> mlp_out;
 
   // Number of test instances
   const int N = x_num_rows; // Can change
@@ -53,7 +54,8 @@ int main() {
   // Send data 
   //--------------------------------------------------------------------
   for (int i = 0; i < N; ++i) {
-    mlp_in.write(x_test[i]);
+    for (int j = 0; j < x_num_cols; j++)
+      mlp_in.write(x_test[i][j]);
   }
 
   //--------------------------------------------------------------------
@@ -64,21 +66,21 @@ int main() {
     dut(mlp_in, mlp_out);
 
     // Read result
-    MeanVariance output_mv = mlp_out.read();
-
-    // data_t MLP_response[2] = mlp_out.read();
-
-    // data_t mean = MLP_response[0];
-    // data_t variance = MLP_response[1];
-
-    data_t mean = output_mv.mean;
-    data_t variance = output_mv.variance;
+    data_t mean = mlp_out.read();
+    data_t variance = mlp_out.read();
 
     num_test_insts++;
-
+    outfile << "Mean = " << mean << std::endl;
+    outfile << "Standard Deviation = " << std::sqrt(static_cast<float>(variance)) << std::endl;
+    outfile << "Actual = " << y_test[i] << std::endl;
     // Check whether our prediction is in our wanted range
-    if (y_test[i] < (mean - sqrt(variance)) || y_test[i] > (mean + sqrt(variance))) {
+    if (y_test[i] < (static_cast<float>(mean) - std::sqrt(static_cast<float>(variance))) || 
+    y_test[i] > (static_cast<float>(mean) + std::sqrt(static_cast<float>(variance)))) {
       error++;
+      outfile << "Error! " << y_test[i] << std::endl;
+    }
+    else{
+      outfile << "Success! " << y_test[i] << std::endl;
     }
   }
 
@@ -91,9 +93,6 @@ int main() {
   outfile << "Number of test instances = " << num_test_insts << std::endl;
   outfile << "Overall Error Rate = " << std::setprecision(3)
           << ((double)error / num_test_insts) * 100 << "%" << std::endl;
-
-  // Close input file for the testing set
-  myfile.close();
   
 
   // Close output file

@@ -13,12 +13,12 @@
 struct MeanVariance{
   data_t mean;
   data_t variance;
-}
+};
 
 // Top function for synthesis
 void dut (
-    hls::stream<data_t[x_num_cols]> &strm_in,
-    hls::stream<data_t[2]> &strm_out
+    hls::stream<data_t> &strm_in,
+    hls::stream<data_t> &strm_out
 );
 
 

@@ -15,6 +15,6 @@ typedef ap_int<16> bit16_t;
 typedef ap_uint<2> bit2_t;
 typedef ap_uint<4> bit4_t;
 typedef ap_uint<32> bit32_t;
-typedef ap_fixed<16,6> data_t;
+typedef ap_fixed<64,32> data_t;
 
 #endif
