@@ -61,9 +61,9 @@ data_t calculate_variance(data_t outputs[NUM_MONTE_CARLO_RUNS], data_t mean)
   data_t var = 0;
   for (int i = 0; i < NUM_MONTE_CARLO_RUNS; i++)
   {
-    var += ((outputs[i] - mean) * (outputs[i] - mean));
+    var += (((outputs[i] - mean) * (outputs[i] - mean))/NUM_MONTE_CARLO_RUNS);
   }
-  return (var / (NUM_MONTE_CARLO_RUNS));
+  return var;
 }
 
 template <int ITERATIONS, int NEURONS>
