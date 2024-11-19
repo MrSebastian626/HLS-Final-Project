@@ -9,6 +9,8 @@
 #include "model.h"
 #include "typedefs.h"
 
+bit16_t global_lfsr_seed = 123;
+
 template <int IN_SIZE, int OUT_SIZE>
 void dense(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[IN_SIZE][OUT_SIZE], const data_t bias[OUT_SIZE])
 {
@@ -72,7 +74,7 @@ void generate_binary_matrix(bit matrix[ITERATIONS][NEURONS], float zero_percenta
   int zeros_added = 0;
 
   // LFSR-based pseudo-random number generation
-  ap_uint<16> lfsr = random_seed;
+  bit16_t lfsr = global_lfsr_seed;
 
   for (int i = 0; i < ITERATIONS; i++)
   {
@@ -93,5 +95,6 @@ void generate_binary_matrix(bit matrix[ITERATIONS][NEURONS], float zero_percenta
       }
     }
   }
+  global_lfsr_seed = lfsr;
 }
 #endif

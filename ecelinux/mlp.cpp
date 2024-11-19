@@ -55,10 +55,10 @@ void mlp_monte_carlo(data_t input[N_INPUTS], data_t &mean, data_t &variance)
   bit mask1[NUM_MONTE_CARLO_RUNS][N_HIDDEN1];
   bit mask2[NUM_MONTE_CARLO_RUNS][N_HIDDEN2];
   bit mask3[NUM_MONTE_CARLO_RUNS][N_HIDDEN3];
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN0>(mask0, 0);
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN1>(mask1, 0);
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN2>(mask2, 0);
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN3>(mask3, 0.05);
+  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN0>(mask0, 0.005);
+  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN1>(mask1, 0.01);
+  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN2>(mask2, 0.01);
+  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN3>(mask3, 0.02);
   for (int i = 0; i < NUM_MONTE_CARLO_RUNS; i++)
   {
     // Initialize intermediate data

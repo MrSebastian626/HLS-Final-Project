@@ -31,7 +31,8 @@
 //------------------------------------------------------------------------
 // MLP testbench
 //------------------------------------------------------------------------
-int main() {
+int main()
+{
   // Output file that saves the test bench results
   std::ofstream outfile;
   outfile.open("out.dat");
@@ -51,9 +52,10 @@ int main() {
   int num_test_insts = 0;
 
   //--------------------------------------------------------------------
-  // Send data 
+  // Send data
   //--------------------------------------------------------------------
-  for (int i = 0; i < N; ++i) {
+  for (int i = 0; i < N; ++i)
+  {
     for (int j = 0; j < x_num_cols; j++)
       mlp_in.write(x_test[i][j]);
   }
@@ -61,7 +63,8 @@ int main() {
   //--------------------------------------------------------------------
   // Execute the MLP sim and receive data
   //--------------------------------------------------------------------
-  for (int i = 0; i < N; ++i) {
+  for (int i = 0; i < N; ++i)
+  {
     // Call design under test (DUT)
     dut(mlp_in, mlp_out);
 
@@ -74,12 +77,14 @@ int main() {
     outfile << "Standard Deviation = " << std::sqrt(static_cast<float>(variance)) << std::endl;
     outfile << "Actual = " << y_test[i] << std::endl;
     // Check whether our prediction is in our wanted range
-    if (y_test[i] < (static_cast<float>(mean) - std::sqrt(static_cast<float>(variance))) || 
-    y_test[i] > (static_cast<float>(mean) + std::sqrt(static_cast<float>(variance)))) {
+    if (y_test[i] < (static_cast<float>(mean) - std::sqrt(static_cast<float>(variance))) ||
+        y_test[i] > (static_cast<float>(mean) + std::sqrt(static_cast<float>(variance))))
+    {
       error++;
       outfile << "Error! " << y_test[i] << std::endl;
     }
-    else{
+    else
+    {
       outfile << "Success! " << y_test[i] << std::endl;
     }
   }
@@ -93,7 +98,6 @@ int main() {
   outfile << "Number of test instances = " << num_test_insts << std::endl;
   outfile << "Overall Error Rate = " << std::setprecision(3)
           << ((double)error / num_test_insts) * 100 << "%" << std::endl;
-  
 
   // Close output file
   outfile.close();
