@@ -1,602 +1,602 @@
-Mean = 32959.8
-Standard Deviation = 0
+Mean = 31458.2
+Standard Deviation = 4618.96
 Actual = 32985.1
-Error! 32985.1
-Mean = 37248.5
-Standard Deviation = 0
+Success! 32985.1
+Mean = 35552
+Standard Deviation = -nan
 Actual = 34737.6
-Error! 34737.6
-Mean = 30683.6
-Standard Deviation = 0
+Success! 34737.6
+Mean = 29286.1
+Standard Deviation = 4298.39
 Actual = 27894.7
-Error! 27894.7
-Mean = 43849.4
-Standard Deviation = 0
+Success! 27894.7
+Mean = 41851.7
+Standard Deviation = -nan
 Actual = 42476.9
-Error! 42476.9
-Mean = 23095.1
-Standard Deviation = 0
+Success! 42476.9
+Mean = 22040.5
+Standard Deviation = 3238.09
 Actual = 21341.1
-Error! 21341.1
-Mean = 22596.3
-Standard Deviation = 0
+Success! 21341.1
+Mean = 21560.9
+Standard Deviation = 3171.96
 Actual = 22043.5
-Error! 22043.5
-Mean = 31693.9
-Standard Deviation = 0
+Success! 22043.5
+Mean = 30249.7
+Standard Deviation = 4441.76
 Actual = 32509.8
-Error! 32509.8
-Mean = 25194.7
-Standard Deviation = 0
+Success! 32509.8
+Mean = 24045.1
+Standard Deviation = 3531.04
 Actual = 21390.7
-Error! 21390.7
-Mean = 35211.9
-Standard Deviation = 0
+Success! 21390.7
+Mean = 33608
+Standard Deviation = -nan
 Actual = 37286.7
-Error! 37286.7
-Mean = 23230.7
-Standard Deviation = 0
+Success! 37286.7
+Mean = 22171.4
+Standard Deviation = 3255.18
 Actual = 24966.3
-Error! 24966.3
-Mean = 36016.9
-Standard Deviation = 0
+Success! 24966.3
+Mean = 34376.4
+Standard Deviation = -nan
 Actual = 35012.4
-Error! 35012.4
-Mean = 23617.3
-Standard Deviation = 0
+Success! 35012.4
+Mean = 22536.5
+Standard Deviation = 3314.29
 Actual = 22031.4
-Error! 22031.4
-Mean = 40794.4
-Standard Deviation = 0
+Success! 22031.4
+Mean = 38936.5
+Standard Deviation = -nan
 Actual = 40993.9
-Error! 40993.9
-Mean = 30213.2
-Standard Deviation = 0
+Success! 40993.9
+Mean = 28837.2
+Standard Deviation = 4232.01
 Actual = 31081.4
-Error! 31081.4
-Mean = 37897.1
-Standard Deviation = 0
+Success! 31081.4
+Mean = 36171.2
+Standard Deviation = -nan
 Actual = 37475.2
-Error! 37475.2
-Mean = 30067.7
-Standard Deviation = 0
+Success! 37475.2
+Mean = 28697.5
+Standard Deviation = 4214.5
 Actual = 34004.7
 Error! 34004.7
-Mean = 34696.4
-Standard Deviation = 0
+Mean = 33116
+Standard Deviation = -nan
 Actual = 31434.9
-Error! 31434.9
-Mean = 18433.5
-Standard Deviation = 0
+Success! 31434.9
+Mean = 17593.7
+Standard Deviation = 2581.3
 Actual = 20806.1
 Error! 20806.1
-Mean = 28885.3
-Standard Deviation = 0
+Mean = 27569.2
+Standard Deviation = 4047.83
 Actual = 25724.7
-Error! 25724.7
-Mean = 35077.2
-Standard Deviation = 0
+Success! 25724.7
+Mean = 33478.8
+Standard Deviation = -nan
 Actual = 40676
-Error! 40676
-Mean = 28915
-Standard Deviation = 0
+Success! 40676
+Mean = 27598.1
+Standard Deviation = 4049.98
 Actual = 29593.8
-Error! 29593.8
-Mean = 41385.8
-Standard Deviation = 0
+Success! 29593.8
+Mean = 39500.4
+Standard Deviation = -nan
 Actual = 40256.1
-Error! 40256.1
-Mean = 44379
-Standard Deviation = 0
+Success! 40256.1
+Mean = 42357.3
+Standard Deviation = -nan
 Actual = 43334.8
-Error! 43334.8
-Mean = 22937
-Standard Deviation = 0
+Success! 43334.8
+Mean = 21886.2
+Standard Deviation = 3220.04
 Actual = 22710.5
-Error! 22710.5
-Mean = 30917.2
-Standard Deviation = 0
+Success! 22710.5
+Mean = 29508.8
+Standard Deviation = 4330.87
 Actual = 28532.1
-Error! 28532.1
-Mean = 36487.8
-Standard Deviation = 0
+Success! 28532.1
+Mean = 34825.8
+Standard Deviation = -nan
 Actual = 36511.9
-Error! 36511.9
-Mean = 23705.8
-Standard Deviation = 0
+Success! 36511.9
+Mean = 22625.8
+Standard Deviation = 3319.27
 Actual = 23753.8
-Error! 23753.8
-Mean = 34885.7
-Standard Deviation = 0
+Success! 23753.8
+Mean = 33296.9
+Standard Deviation = -nan
 Actual = 29393.2
-Error! 29393.2
-Mean = 41693.6
-Standard Deviation = 0
+Success! 29393.2
+Mean = 39794.3
+Standard Deviation = -nan
 Actual = 40137.7
-Error! 40137.7
-Mean = 28136.9
-Standard Deviation = 0
+Success! 40137.7
+Mean = 26855.4
+Standard Deviation = 3940.56
 Actual = 27061.1
-Error! 27061.1
-Mean = 37291.3
-Standard Deviation = 0
+Success! 27061.1
+Mean = 35592.9
+Standard Deviation = -nan
 Actual = 36605.3
-Error! 36605.3
-Mean = 28212.6
-Standard Deviation = 0
+Success! 36605.3
+Mean = 26927.6
+Standard Deviation = 3949.84
 Actual = 28723.3
-Error! 28723.3
-Mean = 31885.1
-Standard Deviation = 0
+Success! 28723.3
+Mean = 30432.2
+Standard Deviation = 4466.47
 Actual = 32156.3
-Error! 32156.3
-Mean = 26519.5
-Standard Deviation = 0
+Success! 32156.3
+Mean = 25311
+Standard Deviation = 3714.53
 Actual = 26361.1
-Error! 26361.1
-Mean = 31127
-Standard Deviation = 0
+Success! 26361.1
+Mean = 29709.3
+Standard Deviation = 4359.38
 Actual = 29421.5
-Error! 29421.5
-Mean = 22544.6
-Standard Deviation = 0
+Success! 29421.5
+Mean = 21517.9
+Standard Deviation = 3157.21
 Actual = 21937.6
-Error! 21937.6
-Mean = 32277.1
-Standard Deviation = 0
+Success! 21937.6
+Mean = 30806.5
+Standard Deviation = 4523.05
 Actual = 32795.2
-Error! 32795.2
-Mean = 38721.1
-Standard Deviation = 0
+Success! 32795.2
+Mean = 36957.1
+Standard Deviation = -nan
 Actual = 39572.4
-Error! 39572.4
-Mean = 40395.2
-Standard Deviation = 0
+Success! 39572.4
+Mean = 38555.5
+Standard Deviation = -nan
 Actual = 33359
-Error! 33359
-Mean = 30830.5
-Standard Deviation = 0
+Success! 33359
+Mean = 29426
+Standard Deviation = 4319.31
 Actual = 29146.2
-Error! 29146.2
-Mean = 36275.2
-Standard Deviation = 0
+Success! 29146.2
+Mean = 34622.8
+Standard Deviation = -nan
 Actual = 37782
-Error! 37782
-Mean = 23649.5
-Standard Deviation = 0
+Success! 37782
+Mean = 22567.8
+Standard Deviation = 3318.11
 Actual = 23321.9
-Error! 23321.9
-Mean = 34331.9
-Standard Deviation = 0
+Success! 23321.9
+Mean = 32768.6
+Standard Deviation = -nan
 Actual = 31248.8
-Error! 31248.8
-Mean = 23326.1
-Standard Deviation = 0
+Success! 31248.8
+Mean = 22263.2
+Standard Deviation = 3267.14
 Actual = 22989.6
-Error! 22989.6
-Mean = 38322.6
-Standard Deviation = 0
+Success! 22989.6
+Mean = 36576.7
+Standard Deviation = -nan
 Actual = 38666.4
-Error! 38666.4
-Mean = 26108.7
-Standard Deviation = 0
+Success! 38666.4
+Mean = 24911.6
+Standard Deviation = 3667.52
 Actual = 23550.4
-Error! 23550.4
-Mean = 42367.5
-Standard Deviation = 0
+Success! 23550.4
+Mean = 40437.4
+Standard Deviation = -nan
 Actual = 41058.3
-Error! 41058.3
-Mean = 44575.2
-Standard Deviation = 0
+Success! 41058.3
+Mean = 42544.8
+Standard Deviation = -nan
 Actual = 44655.8
-Error! 44655.8
-Mean = 33824.3
-Standard Deviation = 0
+Success! 44655.8
+Mean = 32283.1
+Standard Deviation = -nan
 Actual = 34256.2
-Error! 34256.2
-Mean = 22405.4
-Standard Deviation = 0
+Success! 34256.2
+Mean = 21382.4
+Standard Deviation = 3140.99
 Actual = 22097.6
-Error! 22097.6
-Mean = 39749.8
-Standard Deviation = 0
+Success! 22097.6
+Mean = 37939.6
+Standard Deviation = -nan
 Actual = 38153.8
-Error! 38153.8
-Mean = 29072
-Standard Deviation = 0
+Success! 38153.8
+Mean = 27747.8
+Standard Deviation = 4071.54
 Actual = 30387.8
-Error! 30387.8
-Mean = 45133.5
-Standard Deviation = 0
+Success! 30387.8
+Mean = 43077.7
+Standard Deviation = -nan
 Actual = 48349.5
-Error! 48349.5
-Mean = 37859.6
-Standard Deviation = 0
+Success! 48349.5
+Mean = 36135.2
+Standard Deviation = -nan
 Actual = 33903
-Error! 33903
-Mean = 34442.9
-Standard Deviation = 0
+Success! 33903
+Mean = 32874.3
+Standard Deviation = -nan
 Actual = 36369.2
-Error! 36369.2
-Mean = 23571.9
-Standard Deviation = 0
+Success! 36369.2
+Mean = 22497.9
+Standard Deviation = 3301.48
 Actual = 23827.7
-Error! 23827.7
-Mean = 27882.3
-Standard Deviation = 0
+Success! 23827.7
+Mean = 26612.2
+Standard Deviation = 3905.64
 Actual = 25978.9
-Error! 25978.9
-Mean = 36791.6
-Standard Deviation = 0
+Success! 25978.9
+Mean = 35115.7
+Standard Deviation = -nan
 Actual = 35151.7
-Error! 35151.7
-Mean = 24151.2
-Standard Deviation = 0
+Success! 35151.7
+Mean = 23046.2
+Standard Deviation = 3389.24
 Actual = 22905.8
-Error! 22905.8
-Mean = 45611.7
-Standard Deviation = 0
+Success! 22905.8
+Mean = 43533.8
+Standard Deviation = -nan
 Actual = 42875.8
-Error! 42875.8
-Mean = 25363.3
-Standard Deviation = 0
+Success! 42875.8
+Mean = 24207.7
+Standard Deviation = 3552.34
 Actual = 27729.6
-Error! 27729.6
-Mean = 24106.2
-Standard Deviation = 0
+Success! 27729.6
+Mean = 23002.9
+Standard Deviation = 3383.67
 Actual = 23467.1
-Error! 23467.1
-Mean = 32513.9
-Standard Deviation = 0
+Success! 23467.1
+Mean = 31033
+Standard Deviation = 4554.02
 Actual = 32486.2
-Error! 32486.2
-Mean = 33118.1
-Standard Deviation = 0
+Success! 32486.2
+Mean = 31608.9
+Standard Deviation = -nan
 Actual = 35402
-Error! 35402
-Mean = 28644.2
-Standard Deviation = 0
+Success! 35402
+Mean = 27339.1
+Standard Deviation = 4012.5
 Actual = 27697.7
-Error! 27697.7
-Mean = 21286.5
-Standard Deviation = 0
+Success! 27697.7
+Mean = 20312
+Standard Deviation = 2988.14
 Actual = 21648.8
-Error! 21648.8
-Mean = 23750.5
-Standard Deviation = 0
+Success! 21648.8
+Mean = 22666.3
+Standard Deviation = 3329.22
 Actual = 21024.9
-Error! 21024.9
-Mean = 38326.5
-Standard Deviation = 0
+Success! 21024.9
+Mean = 36581.1
+Standard Deviation = -nan
 Actual = 37893.7
-Error! 37893.7
-Mean = 34999.2
-Standard Deviation = 0
+Success! 37893.7
+Mean = 33404.3
+Standard Deviation = -nan
 Actual = 33498.3
-Error! 33498.3
-Mean = 42466.1
-Standard Deviation = 0
+Success! 33498.3
+Mean = 40531.8
+Standard Deviation = -nan
 Actual = 38971.1
-Error! 38971.1
-Mean = 34638.6
-Standard Deviation = 0
+Success! 38971.1
+Mean = 33060.8
+Standard Deviation = -nan
 Actual = 36103.7
-Error! 36103.7
-Mean = 42624.3
-Standard Deviation = 0
+Success! 36103.7
+Mean = 40683.1
+Standard Deviation = -nan
 Actual = 38670.6
-Error! 38670.6
-Mean = 31197.6
-Standard Deviation = 0
+Success! 38670.6
+Mean = 29777.3
+Standard Deviation = 4367.87
 Actual = 31538.4
-Error! 31538.4
-Mean = 32492.9
-Standard Deviation = 0
+Success! 31538.4
+Mean = 31012.7
+Standard Deviation = 4552.38
 Actual = 32898.5
-Error! 32898.5
-Mean = 31293.4
-Standard Deviation = 0
+Success! 32898.5
+Mean = 29868.1
+Standard Deviation = 4382.94
 Actual = 32030.8
-Error! 32030.8
-Mean = 34101.3
-Standard Deviation = 0
+Success! 32030.8
+Mean = 32548.2
+Standard Deviation = -nan
 Actual = 34231.9
-Error! 34231.9
-Mean = 42351.5
-Standard Deviation = 0
+Success! 34231.9
+Mean = 40422.6
+Standard Deviation = -nan
 Actual = 42615.1
-Error! 42615.1
-Mean = 34407.4
-Standard Deviation = 0
+Success! 42615.1
+Mean = 32840
+Standard Deviation = -nan
 Actual = 35013.4
-Error! 35013.4
-Mean = 35554.9
-Standard Deviation = 0
+Success! 35013.4
+Mean = 33935.3
+Standard Deviation = -nan
 Actual = 34451.7
-Error! 34451.7
-Mean = 36615.4
-Standard Deviation = 0
+Success! 34451.7
+Mean = 34947.5
+Standard Deviation = -nan
 Actual = 35650.8
-Error! 35650.8
-Mean = 42110.6
-Standard Deviation = 0
+Success! 35650.8
+Mean = 40192.1
+Standard Deviation = -nan
 Actual = 42824.9
-Error! 42824.9
-Mean = 42270.3
-Standard Deviation = 0
+Success! 42824.9
+Mean = 40344.7
+Standard Deviation = -nan
 Actual = 41512.8
-Error! 41512.8
-Mean = 32960.2
-Standard Deviation = 0
+Success! 41512.8
+Mean = 31458.9
+Standard Deviation = 4617.43
 Actual = 36044.6
-Error! 36044.6
-Mean = 23099.3
-Standard Deviation = 0
+Success! 36044.6
+Mean = 22041.7
+Standard Deviation = 3242.71
 Actual = 19746.8
-Error! 19746.8
-Mean = 34684.3
-Standard Deviation = 0
+Success! 19746.8
+Mean = 33104.6
+Standard Deviation = -nan
 Actual = 33648.7
-Error! 33648.7
-Mean = 36671.5
-Standard Deviation = 0
+Success! 33648.7
+Mean = 35001.7
+Standard Deviation = -nan
 Actual = 29788.3
-Error! 29788.3
-Mean = 32131.1
-Standard Deviation = 0
+Success! 29788.3
+Mean = 30667.7
+Standard Deviation = 4498.45
 Actual = 32802
-Error! 32802
-Mean = 34681.2
-Standard Deviation = 0
+Success! 32802
+Mean = 33101.6
+Standard Deviation = -nan
 Actual = 31397.9
-Error! 31397.9
-Mean = 35791.1
-Standard Deviation = 0
+Success! 31397.9
+Mean = 34161.1
+Standard Deviation = -nan
 Actual = 35958.7
-Error! 35958.7
-Mean = 20881.9
-Standard Deviation = 0
+Success! 35958.7
+Mean = 19925.4
+Standard Deviation = 2932.31
 Actual = 21466.3
-Error! 21466.3
-Mean = 33299.6
-Standard Deviation = 0
+Success! 21466.3
+Mean = 31782.5
+Standard Deviation = -nan
 Actual = 30172.9
-Error! 30172.9
-Mean = 41900.5
-Standard Deviation = 0
+Success! 30172.9
+Mean = 39991.9
+Standard Deviation = -nan
 Actual = 43371.7
-Error! 43371.7
-Mean = 41521.5
-Standard Deviation = 0
+Success! 43371.7
+Mean = 39630.5
+Standard Deviation = -nan
 Actual = 39508.1
-Error! 39508.1
-Mean = 33338.5
-Standard Deviation = 0
+Success! 39508.1
+Mean = 31820.3
+Standard Deviation = -nan
 Actual = 32340.7
-Error! 32340.7
-Mean = 30359.9
-Standard Deviation = 0
+Success! 32340.7
+Mean = 28976.8
+Standard Deviation = 4254.04
 Actual = 32779.7
-Error! 32779.7
-Mean = 34336.8
-Standard Deviation = 0
+Success! 32779.7
+Mean = 32772.1
+Standard Deviation = -nan
 Actual = 35806.6
-Error! 35806.6
-Mean = 33630.5
-Standard Deviation = 0
+Success! 35806.6
+Mean = 32098.5
+Standard Deviation = -nan
 Actual = 27379.1
-Error! 27379.1
-Mean = 40123
-Standard Deviation = 0
+Success! 27379.1
+Mean = 38295.7
+Standard Deviation = -nan
 Actual = 37385.8
-Error! 37385.8
-Mean = 20654
-Standard Deviation = 0
+Success! 37385.8
+Mean = 19713
+Standard Deviation = 2892.72
 Actual = 22460.8
-Error! 22460.8
-Mean = 27257.6
-Standard Deviation = 0
+Success! 22460.8
+Mean = 26013.1
+Standard Deviation = 3822.36
 Actual = 27512.5
-Error! 27512.5
-Mean = 36278.6
-Standard Deviation = 0
+Success! 27512.5
+Mean = 34625.9
+Standard Deviation = -nan
 Actual = 35335.6
-Error! 35335.6
-Mean = 26504.6
-Standard Deviation = 0
+Success! 35335.6
+Mean = 25297.1
+Standard Deviation = 3713.24
 Actual = 25699.4
-Error! 25699.4
-Mean = 41824.3
-Standard Deviation = 0
+Success! 25699.4
+Mean = 39918.9
+Standard Deviation = -nan
 Actual = 42167.1
-Error! 42167.1
-Mean = 39936.3
-Standard Deviation = 0
+Success! 42167.1
+Mean = 38118.1
+Standard Deviation = -nan
 Actual = 38527.6
-Error! 38527.6
-Mean = 23851.9
-Standard Deviation = 0
+Success! 38527.6
+Mean = 22762
+Standard Deviation = 3345.48
 Actual = 25181.7
-Error! 25181.7
-Mean = 25617
-Standard Deviation = 0
+Success! 25181.7
+Mean = 24449.7
+Standard Deviation = 3589.47
 Actual = 27145.5
-Error! 27145.5
-Mean = 24266.8
-Standard Deviation = 0
+Success! 27145.5
+Mean = 23161.2
+Standard Deviation = 3398.72
 Actual = 22600.4
-Error! 22600.4
-Mean = 23150.5
-Standard Deviation = 0
+Success! 22600.4
+Mean = 22091.1
+Standard Deviation = 3248.45
 Actual = 24185.9
-Error! 24185.9
-Mean = 37422.2
-Standard Deviation = 0
+Success! 24185.9
+Mean = 35717.7
+Standard Deviation = -nan
 Actual = 35642.8
-Error! 35642.8
-Mean = 40746.6
-Standard Deviation = 0
+Success! 35642.8
+Mean = 38890.8
+Standard Deviation = -nan
 Actual = 37328.1
-Error! 37328.1
-Mean = 33429.8
-Standard Deviation = 0
+Success! 37328.1
+Mean = 31906.9
+Standard Deviation = -nan
 Actual = 33571.5
-Error! 33571.5
-Mean = 42167.8
-Standard Deviation = 0
+Success! 33571.5
+Mean = 40246.8
+Standard Deviation = -nan
 Actual = 42774
-Error! 42774
-Mean = 33598.4
-Standard Deviation = 0
+Success! 42774
+Mean = 32068
+Standard Deviation = -nan
 Actual = 35817.7
-Error! 35817.7
-Mean = 32603.3
-Standard Deviation = 0
+Success! 35817.7
+Mean = 31118.9
+Standard Deviation = 4574.47
 Actual = 32795.4
-Error! 32795.4
-Mean = 27570.1
-Standard Deviation = 0
+Success! 32795.4
+Mean = 26314
+Standard Deviation = 3860.75
 Actual = 27022.8
-Error! 27022.8
-Mean = 30364.9
-Standard Deviation = 0
+Success! 27022.8
+Mean = 28981.6
+Standard Deviation = 4254.12
 Actual = 31664.5
-Error! 31664.5
-Mean = 22577.7
-Standard Deviation = 0
+Success! 31664.5
+Mean = 21543.2
+Standard Deviation = 3169.35
 Actual = 22086.1
-Error! 22086.1
-Mean = 33597.1
-Standard Deviation = 0
+Success! 22086.1
+Mean = 32066.8
+Standard Deviation = -nan
 Actual = 30063.8
-Error! 30063.8
-Mean = 30953
-Standard Deviation = 0
+Success! 30063.8
+Mean = 29543.1
+Standard Deviation = 4335.31
 Actual = 33646.2
-Error! 33646.2
-Mean = 37365.3
-Standard Deviation = 0
+Success! 33646.2
+Mean = 35663.5
+Standard Deviation = -nan
 Actual = 38010.6
-Error! 38010.6
-Mean = 31294.9
-Standard Deviation = 0
+Success! 38010.6
+Mean = 29869.5
+Standard Deviation = 4384.79
 Actual = 32657
-Error! 32657
-Mean = 26822.8
-Standard Deviation = 0
+Success! 32657
+Mean = 25600.6
+Standard Deviation = 3758.23
 Actual = 24680.3
-Error! 24680.3
-Mean = 23490.8
-Standard Deviation = 0
+Success! 24680.3
+Mean = 22413.5
+Standard Deviation = 3300.15
 Actual = 22037.5
-Error! 22037.5
-Mean = 41612.1
-Standard Deviation = 0
+Success! 22037.5
+Mean = 39716.3
+Standard Deviation = -nan
 Actual = 40779.6
-Error! 40779.6
-Mean = 41428.5
-Standard Deviation = 0
+Success! 40779.6
+Mean = 39541.2
+Standard Deviation = -nan
 Actual = 41176.6
-Error! 41176.6
-Mean = 39843.7
-Standard Deviation = 0
+Success! 41176.6
+Mean = 38029
+Standard Deviation = -nan
 Actual = 39210.1
-Error! 39210.1
-Mean = 27420.1
-Standard Deviation = 0
+Success! 39210.1
+Mean = 26171.1
+Standard Deviation = 3840.6
 Actual = 27027.7
-Error! 27027.7
-Mean = 37835.9
-Standard Deviation = 0
+Success! 27027.7
+Mean = 36112.5
+Standard Deviation = -nan
 Actual = 35884.1
-Error! 35884.1
-Mean = 36087.2
-Standard Deviation = 0
+Success! 35884.1
+Mean = 34443.1
+Standard Deviation = -nan
 Actual = 33493.8
-Error! 33493.8
-Mean = 30131.2
-Standard Deviation = 0
+Success! 33493.8
+Mean = 28759.1
+Standard Deviation = 4225.94
 Actual = 31027.7
-Error! 31027.7
-Mean = 33258.3
-Standard Deviation = 0
+Success! 31027.7
+Mean = 31743.5
+Standard Deviation = -nan
 Actual = 34349.7
-Error! 34349.7
-Mean = 28511.8
-Standard Deviation = 0
+Success! 34349.7
+Mean = 27213.2
+Standard Deviation = 3993.46
 Actual = 27169.6
-Error! 27169.6
-Mean = 22952.8
-Standard Deviation = 0
+Success! 27169.6
+Mean = 21906.9
+Standard Deviation = 3214.51
 Actual = 22971.9
-Error! 22971.9
-Mean = 34435.2
-Standard Deviation = 0
+Success! 22971.9
+Mean = 32866.6
+Standard Deviation = -nan
 Actual = 33506
-Error! 33506
-Mean = 26248.4
-Standard Deviation = 0
+Success! 33506
+Mean = 25052.6
+Standard Deviation = 3676.12
 Actual = 24938.8
-Error! 24938.8
-Mean = 37365.5
-Standard Deviation = 0
+Success! 24938.8
+Mean = 35663.4
+Standard Deviation = -nan
 Actual = 38400
-Error! 38400
-Mean = 26700.3
-Standard Deviation = 0
+Success! 38400
+Mean = 25484.2
+Standard Deviation = 3739.58
 Actual = 27944.6
-Error! 27944.6
-Mean = 25701.4
-Standard Deviation = 0
+Success! 27944.6
+Mean = 24530.5
+Standard Deviation = 3599.51
 Actual = 23996.8
-Error! 23996.8
-Mean = 21584.7
-Standard Deviation = 0
+Success! 23996.8
+Mean = 20601.3
+Standard Deviation = 3022.68
 Actual = 23483.1
-Error! 23483.1
-Mean = 22573.9
-Standard Deviation = 0
+Success! 23483.1
+Mean = 21538.4
+Standard Deviation = 3171.31
 Actual = 21059.2
-Error! 21059.2
-Mean = 26630
-Standard Deviation = 0
+Success! 21059.2
+Mean = 25415.5
+Standard Deviation = 3733.42
 Actual = 27304.9
-Error! 27304.9
-Mean = 47414.8
-Standard Deviation = 0
+Success! 27304.9
+Mean = 45255
+Standard Deviation = 1082.38
 Actual = 46526
 Error! 46526
-Mean = 40288.7
-Standard Deviation = 0
+Mean = 38453.5
+Standard Deviation = -nan
 Actual = 40735.5
-Error! 40735.5
-Mean = 36823
-Standard Deviation = 0
+Success! 40735.5
+Mean = 35145.6
+Standard Deviation = -nan
 Actual = 37404.8
-Error! 37404.8
-Mean = 38802.2
-Standard Deviation = 0
+Success! 37404.8
+Mean = 37035.1
+Standard Deviation = -nan
 Actual = 40590.1
-Error! 40590.1
-Mean = 30953.8
-Standard Deviation = 0
+Success! 40590.1
+Mean = 29543.9
+Standard Deviation = 4336.13
 Actual = 30941.4
-Error! 30941.4
-Mean = 33120.5
-Standard Deviation = 0
+Success! 30941.4
+Mean = 31611.3
+Standard Deviation = -nan
 Actual = 38234.7
-Error! 38234.7
-Mean = 23787.2
-Standard Deviation = 0
+Success! 38234.7
+Mean = 22699.1
+Standard Deviation = 3337.2
 Actual = 22795.9
-Error! 22795.9
-Mean = 29911.4
-Standard Deviation = 0
+Success! 22795.9
+Mean = 28549
+Standard Deviation = 4189.48
 Actual = 29175.4
-Error! 29175.4
-Mean = 24127.2
-Standard Deviation = 0
+Success! 29175.4
+Mean = 23025.5
+Standard Deviation = 3382.52
 Actual = 20509.4
-Error! 20509.4
+Success! 20509.4
 Number of test instances = 150
-Overall Error Rate = 100%
+Overall Error Rate = 2%

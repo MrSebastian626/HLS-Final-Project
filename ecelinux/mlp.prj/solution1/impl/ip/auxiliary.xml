@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="dut" xd:componentRef="dut" xd:initiationInterval="1126918" xd:clockPeriod="10.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
-  <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
-  <xd:arg xd:name="strm_in" xd:originalName="strm_in" xd:direction="in" xd:interfaceRef="strm_in_V_V" xd:busTypeRef="acc_fifo" xd:dataWidth="16"/>
-  <xd:arg xd:name="strm_out" xd:originalName="strm_out" xd:direction="out" xd:interfaceRef="strm_out_V_V" xd:busTypeRef="acc_fifo" xd:firstOut="2" xd:dataWidth="16"/>
-  <xd:latencyEstimates xd:best-case="1126917" xd:worst-case="1126917" xd:average-case="1126917"/>
-  <xd:resourceEstimates xd:LUT="1896" xd:FF="1038" xd:BRAM="9" xd:DSP="8"/>
-</xd:acceleratorMap>
