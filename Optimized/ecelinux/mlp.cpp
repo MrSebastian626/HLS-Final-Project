@@ -68,28 +68,19 @@ void mlp_monte_carlo(data_t input[N_INPUTS], data_t &mean, data_t &variance)
     data_t dense3[N_HIDDEN3];
     data_t dense4[N_OUTPUTS];
 
-    data_t dropout0[N_HIDDEN0];
-    data_t dropout1[N_HIDDEN1];
-    data_t dropout2[N_HIDDEN2];
-    data_t dropout3[N_HIDDEN3];
-
-    dense<N_INPUTS, N_HIDDEN0>(input, dense0, w1, b1);
+    dense<N_INPUTS, N_HIDDEN0>(input, dense0, w1, b1, mask0[i]);
     relu<N_HIDDEN0>(dense0);
-    apply_dropout<N_HIDDEN0>(dense0, dropout0, mask0[i]);
 
-    dense<N_HIDDEN0, N_HIDDEN1>(dropout0, dense1, w2, b2);
+    dense<N_HIDDEN0, N_HIDDEN1>(dense0, dense1, w2, b2, mask1[i]);
     relu<N_HIDDEN1>(dense1);
-    apply_dropout<N_HIDDEN1>(dense1, dropout1, mask1[i]);
 
-    dense<N_HIDDEN1, N_HIDDEN2>(dropout1, dense2, w3, b3);
+    dense<N_HIDDEN1, N_HIDDEN2>(dense1, dense2, w3, b3, mask2[i]);
     relu<N_HIDDEN2>(dense2);
-    apply_dropout<N_HIDDEN2>(dense2, dropout2, mask2[i]);
 
-    dense<N_HIDDEN2, N_HIDDEN3>(dropout2, dense3, w4, b4);
+    dense<N_HIDDEN2, N_HIDDEN3>(dense2, dense3, w4, b4, mask3[i]);
     relu<N_HIDDEN3>(dense3);
-    apply_dropout<N_HIDDEN3>(dense3, dropout3, mask3[i]);
 
-    dense<N_HIDDEN3, N_OUTPUTS>(dropout3, dense4, w5, b5);
+    final<N_HIDDEN3, N_OUTPUTS>(dense3, dense4, w5, b5);
     relu<N_HIDDEN3>(dense4);
     outputs[i] = dense4[0];
   }

@@ -12,7 +12,21 @@
 bit16_t global_lfsr_seed = 123;
 
 template <int IN_SIZE, int OUT_SIZE>
-void dense(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[IN_SIZE][OUT_SIZE], const data_t bias[OUT_SIZE])
+void dense(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[IN_SIZE][OUT_SIZE], const data_t bias[OUT_SIZE], bit mask[OUT_SIZE])
+{
+  for (int i = 0; i < OUT_SIZE; i++)
+  {
+    data_t sum = bias[i];
+    for (int j = 0; j < IN_SIZE; j++)
+    {
+      sum += input[j] * weight[j][i];
+    }
+    output[i] = mask[i] ? sum : (data_t) 0;
+  }
+}
+
+template <int IN_SIZE, int OUT_SIZE>
+void final(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[IN_SIZE][OUT_SIZE], const data_t bias[OUT_SIZE])
 {
   for (int i = 0; i < OUT_SIZE; i++)
   {
