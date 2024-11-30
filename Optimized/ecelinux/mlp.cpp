@@ -55,11 +55,11 @@ void mlp_monte_carlo(data_t input[N_INPUTS], data_t &mean, data_t &variance)
   bit mask1[NUM_MONTE_CARLO_RUNS][N_HIDDEN1];
   bit mask2[NUM_MONTE_CARLO_RUNS][N_HIDDEN2];
   bit mask3[NUM_MONTE_CARLO_RUNS][N_HIDDEN3];
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN0>(mask0, 0.004);
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN1>(mask1, 0.006);
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN2>(mask2, 0.008);
-  generate_binary_matrix<NUM_MONTE_CARLO_RUNS, N_HIDDEN3>(mask3, 0.01);
-  for (int i = 0; i < NUM_MONTE_CARLO_RUNS; i++)
+  generate_binary_matrix0<NUM_MONTE_CARLO_RUNS, N_HIDDEN0>(mask0, 0.004);
+  generate_binary_matrix1<NUM_MONTE_CARLO_RUNS, N_HIDDEN1>(mask1, 0.006);
+  generate_binary_matrix2<NUM_MONTE_CARLO_RUNS, N_HIDDEN2>(mask2, 0.008);
+  generate_binary_matrix3<NUM_MONTE_CARLO_RUNS, N_HIDDEN3>(mask3, 0.01);
+  iterate_num_monte_runs: for (int i = 0; i < NUM_MONTE_CARLO_RUNS; i++)
   {
     // Initialize intermediate data
     data_t dense0[N_HIDDEN0];
@@ -68,20 +68,20 @@ void mlp_monte_carlo(data_t input[N_INPUTS], data_t &mean, data_t &variance)
     data_t dense3[N_HIDDEN3];
     data_t dense4[N_OUTPUTS];
 
-    dense<N_INPUTS, N_HIDDEN0>(input, dense0, w1, b1, mask0[i]);
-    relu<N_HIDDEN0>(dense0);
+    dense_lay0<N_INPUTS, N_HIDDEN0>(input, dense0, w1, b1, mask0[i]);
+    relu0<N_HIDDEN0>(dense0);
 
-    dense<N_HIDDEN0, N_HIDDEN1>(dense0, dense1, w2, b2, mask1[i]);
-    relu<N_HIDDEN1>(dense1);
+    dense_lay1<N_HIDDEN0, N_HIDDEN1>(dense0, dense1, w2, b2, mask1[i]);
+    relu1<N_HIDDEN1>(dense1);
 
-    dense<N_HIDDEN1, N_HIDDEN2>(dense1, dense2, w3, b3, mask2[i]);
-    relu<N_HIDDEN2>(dense2);
+    dense_lay2<N_HIDDEN1, N_HIDDEN2>(dense1, dense2, w3, b3, mask2[i]);
+    relu2<N_HIDDEN2>(dense2);
 
-    dense<N_HIDDEN2, N_HIDDEN3>(dense2, dense3, w4, b4, mask3[i]);
-    relu<N_HIDDEN3>(dense3);
+    dense_lay3<N_HIDDEN2, N_HIDDEN3>(dense2, dense3, w4, b4, mask3[i]);
+    relu3<N_HIDDEN3>(dense3);
 
     final<N_HIDDEN3, N_OUTPUTS>(dense3, dense4, w5, b5);
-    relu<N_HIDDEN3>(dense4);
+    relu4<N_HIDDEN3>(dense4);
     outputs[i] = dense4[0];
   }
   mean = calculate_mean(outputs);
