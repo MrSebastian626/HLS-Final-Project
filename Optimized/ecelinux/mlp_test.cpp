@@ -58,16 +58,16 @@ int main()
 
     // Read result
     data_t mean = mlp_out.read();
-    data_t variance = mlp_out.read();
+    data_t dev = mlp_out.read();
 
     num_test_insts++;
     avg_distance += int(abs(static_cast<float>(mean)-y_test[i]));
     outfile << "Mean = " << mean << std::endl;
-    outfile << "Standard Deviation = " << std::sqrt(static_cast<float>(variance)) << std::endl;
+    outfile << "Standard Deviation = " << (dev) << std::endl;
     outfile << "Actual = " << y_test[i] << std::endl;
     // Check whether our prediction is in our wanted range
-    if (y_test[i] < (static_cast<float>(mean) - std::sqrt(static_cast<float>(variance))) ||
-        y_test[i] > (static_cast<float>(mean) + std::sqrt(static_cast<float>(variance))))
+    if (y_test[i] < (static_cast<float>(mean) - static_cast<float>(dev)) ||
+        y_test[i] > (static_cast<float>(mean) + static_cast<float>(dev)))
     {
       error++;
       outfile << "Error! " << std::endl;

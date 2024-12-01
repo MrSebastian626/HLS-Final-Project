@@ -26,35 +26,39 @@ create_clock -period 10 -name default
 # Optimizations
 
 # Dense
-set_directive_unroll dense_lay/dense_inner
-set_directive_pipeline dense_lay/dense_outer
-set_directive_array_reshape -type complete -dim 1 mlp_xcel input
-set_directive_array_partition -type complete -dim 0 mlp_xcel w1
-set_directive_array_partition -type complete -dim 0 mlp_xcel w2
-set_directive_array_partition -type complete -dim 0 mlp_xcel w3
-set_directive_array_partition -type complete -dim 0 mlp_xcel w4
-set_directive_array_partition -type complete -dim 0 mlp_xcel w5
+set_directive_unroll -factor 32 dense_lay/dense_inner
+# set_directive_pipeline dense_lay/dense_inner
+set_directive_array_partition -type complete -dim 1 dense_lay input
+set_directive_array_partition -type complete -dim 1 mlp_xcel w1
+set_directive_array_partition -type complete -dim 1 mlp_xcel w2
+set_directive_array_partition -type complete -dim 1 mlp_xcel w3
+set_directive_array_partition -type complete -dim 1 mlp_xcel w4
+set_directive_array_partition -type complete -dim 1 mlp_xcel w5
+
 
 
 # Final
-# set_directive_unroll final/final_inner
-# set_directive_pipeline final/final_outer
+set_directive_unroll final/final_inner
+set_directive_array_partition -type complete -dim 1 final input
+set_directive_array_partition -type complete -dim 1 final weight
 
-# Relu 0
-# set_directive_unroll relu0/relu_0
+# Relu
+set_directive_unroll relu/relu_outer
+set_directive_array_partition -type complete -dim 1 relu data
 
 # Calc Mean
 # set_directive_unroll calculate_mean/iterate_runs_mean
+# set_directive_array_partition -type complete -dim 1 calculate_mean output
 
 # Calc Var
 # set_directive_unroll calculate_variance/iterate_runs_var
+# set_directive_array_partition -type complete -dim 1 calculate_var output
 
-# Gen Matrix 0
-# set_directive_unroll generate_binary_matrix0/gen0_neur
-# set_directive_pipeline generate_binary_matrix0/gen0_iter
+# Gen Matrix
+# set_directive_unroll generate_binary_matrix/gen_neur
+# set_directive_pipeline generate_binary_matrix/gen_iter
 
-# Monte Carlo
-# set_directive_pipeline mlp_monte_carlo/iterate_num_monte_runs
+# set_directive_array_partition -type complete -dim 0 generate_binary_matrix matrix
 
 ############################################
 

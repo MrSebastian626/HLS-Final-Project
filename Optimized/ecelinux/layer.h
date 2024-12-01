@@ -6,6 +6,8 @@
 #ifndef LAYER_H
 #define LAYER_H
 
+#include <stdio.h>
+#include <cmath>
 #include "model.h"
 #include "typedefs.h"
 
@@ -42,7 +44,7 @@ void final(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[I
 template <int SIZE>
 void relu(data_t data[SIZE])
 {
- relu: for (int i = 0; i < SIZE; i++)
+ relu_outer: for (int i = 0; i < SIZE; i++)
   {
     if (data[i] < 0)
     {
@@ -51,33 +53,24 @@ void relu(data_t data[SIZE])
   }
 }
 
-template <int SIZE>
-void apply_dropout(data_t input[SIZE], data_t output[SIZE], const bool mask[SIZE])
-{
-  for (int i = 0; i < SIZE; i++)
-  {
-    output[i] = mask[i] ? input[i] : (data_t)0;
-  }
-}
-
 data_t calculate_mean(data_t outputs[NUM_MONTE_CARLO_RUNS])
 {
   data_t sum = 0;
  iterate_runs_mean: for (int i = 0; i < NUM_MONTE_CARLO_RUNS; i++)
   {
-    sum += outputs[i];
+    sum += outputs[i]/NUM_MONTE_CARLO_RUNS;
   }
-  return (sum / NUM_MONTE_CARLO_RUNS);
+  return sum;
 }
 
 data_t calculate_variance(data_t outputs[NUM_MONTE_CARLO_RUNS], data_t mean)
 {
-  data_t var = 0;
+  variance_t var = 0;
   iterate_runs_var: for (int i = 0; i < NUM_MONTE_CARLO_RUNS; i++)
   {
     var += (((outputs[i] - mean) * (outputs[i] - mean))/NUM_MONTE_CARLO_RUNS);
   }
-  return var;
+  return std::sqrt(static_cast<float>(var));
 }
 
 template <int ITERATIONS, int NEURONS>

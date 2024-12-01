@@ -70,7 +70,6 @@ void mlp_xcel(data_t input[N_INPUTS], data_t &mean, data_t &variance)
     relu<N_HIDDEN3>(dense3);
 
     final<N_HIDDEN3, N_OUTPUTS>(dense3, dense4, w5, b5);
-    relu<N_HIDDEN3>(dense4);
     outputs[i] = dense4[0];
   }
   mean = calculate_mean(outputs);
