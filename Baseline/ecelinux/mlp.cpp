@@ -36,19 +36,7 @@ void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
   strm_out.write(mv.variance);
 }
 
-//-----------------------------------
-// mlp function
-//-----------------------------------
-// @param[in]  : input - input stuff
-// @param[out] : output - sine output
-
-void mlp_xcel(data_t input[N_INPUTS], data_t &mean_output, data_t &variance_output)
-{
-
-  mlp_monte_carlo(input, mean_output, variance_output);
-}
-
-void mlp_monte_carlo(data_t input[N_INPUTS], data_t &mean, data_t &variance)
+void mlp_xcel(data_t input[N_INPUTS], data_t &mean, data_t &variance)
 {
   // Initialize Masks
   bit mask0[NUM_MONTE_CARLO_RUNS][N_HIDDEN0];

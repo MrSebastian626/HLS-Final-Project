@@ -14,6 +14,7 @@ bit16_t global_lfsr_seed = 123;
 template <int IN_SIZE, int OUT_SIZE>
 void dense(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[IN_SIZE][OUT_SIZE], const data_t bias[OUT_SIZE])
 {
+  #pragma HLS inline off
   for (int i = 0; i < OUT_SIZE; i++)
   {
     data_t sum = bias[i];
