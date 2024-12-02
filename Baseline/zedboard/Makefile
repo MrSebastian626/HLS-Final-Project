@@ -9,25 +9,25 @@
 
 
 INC_PATH=/usr/include/vivado_hls
-CFLAGS = -I${INC_PATH}
+CFLAGS = -I${INC_PATH} -DHLS_NO_XIL_FPO_LIB -O3
 
 all: sw
 
-sw: cordic.cpp cordic_test.cpp
-	@echo "Compiling & executing cordic software program on ARM ..."
-	g++ ${CFLAGS} cordic.cpp cordic_test.cpp -o cordic-arm
-	./cordic-arm
+sw: mlp.cpp mlp_test.cpp
+	@echo "Compiling & executing MLP software program on ARM ..."
+	g++ ${CFLAGS} mlp.cpp mlp_test.cpp -o mlp
+	./mlp
 
 fpga: host.cpp
-	@echo "Compiling host program & running CORDIC accelerator ..."
-	g++ -I${INC_PATH} $< -o cordic-fpga
-	./cordic-fpga
+	@echo "Compiling host program & running MLP accelerator ..."
+	g++ -I${INC_PATH} $< -o mlp-fpga
+	./mlp-fpga
 
 fpga_batch: host_batch.cpp
-	@echo "Compiling host program (batch) & running CORDIC accelerator ..."
-	g++ -I${INC_PATH} $< -o cordic-fpga-batch
-	./cordic-fpga-batch
+	@echo "Compiling host program (batch) & running MLP accelerator ..."
+	g++ -I${INC_PATH} $< -o mlp-fpga-batch
+	./mlp-fpga-batch
 
 clean:
 	@echo "Clean up output files"
-	rm -f cordic-fpga cordic-fpga-batch  *.dat
+	rm -f mlp-fpga mlp-fpga-batch  *.dat
