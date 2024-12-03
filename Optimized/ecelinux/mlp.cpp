@@ -15,25 +15,30 @@
 // @param[out] : strm_out - output stream
 void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
 {
-  data_t input[N_INPUTS];
-  data_t mean_output;
-  data_t variance_output;
+  // printf("I AM HERE!\n");
+  bit32_t input = strm_in.read();
+  strm_out.write(strm_in.read());
+  // printf("I AM NOW HERE!\n");
 
-  // Read input data from stream
-  for (int i = 0; i < N_INPUTS; i++)
-  {
-    input[i] = strm_in.read();
-  }
+  // data_t input[N_INPUTS];
+  // data_t mean_output;
+  // data_t variance_output;
 
-  // Call the MLP accelerator function
-  mlp_xcel(input, mean_output, variance_output);
+  // // Read input data from stream
+  // for (int i = 0; i < N_INPUTS; i++)
+  // {
+  //   input[i] = strm_in.read();
+  // }
 
-  // Write outputs to stream
-  MeanVariance mv;
-  mv.mean = mean_output;
-  mv.variance = variance_output;
-  strm_out.write(mv.mean);
-  strm_out.write(mv.variance);
+  // // Call the MLP accelerator function
+  // mlp_xcel(input, mean_output, variance_output);
+
+  // // Write outputs to stream
+  // MeanVariance mv;
+  // mv.mean = mean_output;
+  // mv.variance = variance_output;
+  // strm_out.write(mv.mean);
+  // strm_out.write(mv.variance);
 }
 
 
