@@ -14,7 +14,7 @@
 bit16_t global_lfsr_seed = 123;
 
 template <int IN_SIZE, int OUT_SIZE>
-void dense_lay(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[IN_SIZE][OUT_SIZE], const data_t bias[OUT_SIZE], bit mask[OUT_SIZE])
+void dense_lay(data_t input[IN_SIZE], data_t output[OUT_SIZE], const weight_t weight[IN_SIZE][OUT_SIZE], const weight_t bias[OUT_SIZE], bit mask[OUT_SIZE])
 {
  dense_outer: for (int i = 0; i < OUT_SIZE; i++)
   {
@@ -28,7 +28,7 @@ void dense_lay(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weig
 }
 
 template <int IN_SIZE, int OUT_SIZE>
-void final(data_t input[IN_SIZE], data_t output[OUT_SIZE], const data_t weight[IN_SIZE][OUT_SIZE], const data_t bias[OUT_SIZE])
+void final(data_t input[IN_SIZE], data_t output[OUT_SIZE], const weight_t weight[IN_SIZE][OUT_SIZE], const weight_t bias[OUT_SIZE])
 {
  final_outer: for (int i = 0; i < OUT_SIZE; i++)
   {
@@ -77,7 +77,6 @@ template <int ITERATIONS, int NEURONS>
 void generate_binary_matrix(bit matrix[ITERATIONS][NEURONS], float zero_percentage)
 {
   int total_zeros = (int)(zero_percentage * ITERATIONS * NEURONS);
-  int random_seed = 123; // Seed for LFSR
   int zeros_added = 0;
 
   // LFSR-based pseudo-random number generation
@@ -90,7 +89,6 @@ void generate_binary_matrix(bit matrix[ITERATIONS][NEURONS], float zero_percenta
       // Update LFSR
       bool bit = lfsr[0] ^ lfsr[2] ^ lfsr[3] ^ lfsr[5];
       lfsr = (lfsr >> 1) | (bit << 15);
-
       if (zeros_added < total_zeros && (lfsr & 0x1))
       {
         matrix[i][j] = 0;

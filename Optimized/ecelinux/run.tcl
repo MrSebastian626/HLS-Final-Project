@@ -26,8 +26,8 @@ create_clock -period 10 -name default
 # Optimizations
 
 # Dense
-set_directive_unroll -factor 32 dense_lay/dense_inner
-# set_directive_pipeline dense_lay/dense_inner
+set_directive_unroll dense_lay/dense_inner
+set_directive_pipeline dense_lay/dense_outer
 set_directive_array_partition -type complete -dim 1 dense_lay input
 set_directive_array_partition -type complete -dim 1 mlp_xcel w1
 set_directive_array_partition -type complete -dim 1 mlp_xcel w2
@@ -55,10 +55,14 @@ set_directive_array_partition -type complete -dim 1 relu data
 # set_directive_array_partition -type complete -dim 1 calculate_var output
 
 # Gen Matrix
-# set_directive_unroll generate_binary_matrix/gen_neur
-# set_directive_pipeline generate_binary_matrix/gen_iter
+set_directive_unroll generate_binary_matrix/gen_neur
+set_directive_unroll generate_binary_matrix/gen_iter
 
-# set_directive_array_partition -type complete -dim 0 generate_binary_matrix matrix
+set_directive_array_partition -type complete -dim 0 generate_binary_matrix matrix
+
+# Monte Carlo Iterations
+set_directive_unroll -factor 2 mlp_xcel/iterate_num_monte_runs
+
 
 ############################################
 
