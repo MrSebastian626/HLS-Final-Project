@@ -47,18 +47,15 @@ set_directive_unroll relu/relu_outer
 set_directive_array_partition -type complete -dim 1 relu data
 
 # Calc Mean
-# set_directive_unroll calculate_mean/iterate_runs_mean
-# set_directive_array_partition -type complete -dim 1 calculate_mean output
+set_directive_pipeline calculate_mean/iterate_runs_mean
 
 # Calc Var
-# set_directive_unroll calculate_variance/iterate_runs_var
-# set_directive_array_partition -type complete -dim 1 calculate_var output
+set_directive_pipeline calculate_variance/iterate_runs_var
 
 # Gen Matrix
 set_directive_unroll generate_binary_matrix/gen_neur
-set_directive_unroll generate_binary_matrix/gen_iter
 
-set_directive_array_partition -type complete -dim 0 generate_binary_matrix matrix
+set_directive_array_partition -type complete -dim 2 generate_binary_matrix matrix
 
 # Monte Carlo Iterations
 set_directive_unroll -factor 2 mlp_xcel/iterate_num_monte_runs

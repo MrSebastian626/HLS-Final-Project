@@ -61,7 +61,7 @@ int main()
     data_t variance = mlp_out.read();
 
     num_test_insts++;
-    avg_distance += int(abs(mean-y_test[i]));
+    avg_distance += int(abs(static_cast<float>(mean)-y_test[i]));
     outfile << "Mean = " << mean << std::endl;
     outfile << "Standard Deviation = " << std::sqrt(static_cast<float>(variance)) << std::endl;
     outfile << "Actual = " << y_test[i] << std::endl;

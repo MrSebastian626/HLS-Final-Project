@@ -81,7 +81,6 @@ void generate_binary_matrix(bit matrix[ITERATIONS][NEURONS], float zero_percenta
 
   // LFSR-based pseudo-random number generation
   bit16_t lfsr = global_lfsr_seed;
-
  gen_iter: for (int i = 0; i < ITERATIONS; i++)
   {
    gen_neur: for (int j = 0; j < NEURONS; j++)
