@@ -25,8 +25,8 @@ int main()
   outfile.open("out.dat");
 
   // HLS streams for communicating with the MLP block
-  hls::stream<data_t> mlp_in;
-  hls::stream<data_t> mlp_out;
+  hls::stream<bit32_t> mlp_in;
+  hls::stream<bit32_t> mlp_out;
 
   // Number of test instances
   const int N = x_num_rows; // Can change
@@ -45,25 +45,27 @@ int main()
   for (int i = 0; i < N; ++i)
   {
     for (int j = 0; j < x_num_cols; j++)
-      mlp_in.write(x_test[i][j]);
+      if (j == 0 & i < 26) {
+        mlp_in.write(x_test[i][j]);
+      }
   }
 
   //--------------------------------------------------------------------
   // Execute the MLP sim and receive data
   //--------------------------------------------------------------------
-  for (int i = 0; i < N; ++i)
-  {
-    // Call design under test (DUT)
+      // Call design under test (DUT)
     dut(mlp_in, mlp_out);
-
+  for (int i = 0; i < 26; ++i)
+  {
     // Read result
-    data_t mean = mlp_out.read();
-    data_t dev = mlp_out.read();
-
+    bit32_t mean = mlp_out.read();
+    // data_t dev = mlp_out.read();
+    bit32_t dev = 3;
+    std::cout << "out from dut = " << mean << std::endl;
     num_test_insts++;
     avg_distance += int(abs(static_cast<float>(mean)-y_test[i]));
     outfile << "Mean = " << mean << std::endl;
-    outfile << "Standard Deviation = " << (dev) << std::endl;
+    // outfile << "Standard Deviation = " << (dev) << std::endl;
     outfile << "Actual = " << y_test[i] << std::endl;
     // Check whether our prediction is in our wanted range
     if (y_test[i] < (static_cast<float>(mean) - static_cast<float>(dev)) ||

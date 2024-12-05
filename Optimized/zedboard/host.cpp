@@ -14,7 +14,7 @@
 #include "mlp.h"
 #include "data/test_data.cpp" // Include the test data directly
 
-const int TEST_SIZE = 150;  // Number of rows in x_test
+const int TEST_SIZE = 25;  // Number of rows in x_test
 const int FEATURE_COUNT = 9; // Number of features (columns) per row
 
 //--------------------------------------
@@ -42,7 +42,6 @@ int main(int argc, char **argv) {
   //--------------------------------------------------------------------
   // Run it once without timer to test accuracy
   //--------------------------------------------------------------------
-  timer.start();
   std::cout << "Testing accuracy over " << TEST_SIZE << " test samples." << std::endl;
   // Send data to accelerator
   for (int i = 0; i < TEST_SIZE; ++i) {
@@ -50,17 +49,26 @@ int main(int argc, char **argv) {
     for (int j = 0; j < FEATURE_COUNT; j++) {
       bit32_t test_feature;
       test_feature = static_cast<bit32_t>(x_test[i][j]); // Convert to bit32_t
-      std::cout << "input is " << x_test[i][j] << "." << std::endl;
+      if (j == 0) {
+        std::cout << "input is " << test_feature << "." << std::endl;
+      }
+      //bit32_t sample = 4;
+      // nbytes = write(fdw, (void *)&sample, sizeof(sample));
+      // assert(nbytes == sizeof(sample));
       nbytes = write(fdw, (void *)&test_feature, sizeof(test_feature));
       assert(nbytes == sizeof(test_feature));
     }
   }
 
-  for (int i = 0; i < TEST_SIZE; ++i) {
-    bit32_t output;
-    nbytes = read(fdr, (void *)&output, sizeof(output));
-    assert(nbytes == sizeof(output));
-    std::cout << "output is " << output << "." << std::endl;
+ for (int i = 0; i < TEST_SIZE; ++i) {
+    for (int j = 0; j< FEATURE_COUNT; j++) {
+      bit32_t output;
+      nbytes = read(fdr, (void *)&output, sizeof(output));
+      assert(nbytes == sizeof(output));
+      if (j == 0) {
+        std::cout << "output is " << output << "." << std::endl;
+      }
+    }
 
     // bit32_t output_mean, output_variance;
     // nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
@@ -88,7 +96,7 @@ int main(int argc, char **argv) {
   //--------------------------------------------------------------------
   const int REPS = 20; // Number of repetitions
   std::cout << "Testing performance over " << REPS * TEST_SIZE << " test samples." << std::endl;
-  // timer.start();
+  timer.start();
 
   // // Send data to accelerator (REPS times)
   // for (int r = 0; r < REPS; r++) {

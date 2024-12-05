@@ -13,21 +13,31 @@
 //-----------------------------------
 // @param[in]  : strm_in - input stream
 // @param[out] : strm_out - output stream
-void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
+void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out)
 {
   // printf("I AM HERE!\n");
-  bit32_t input = strm_in.read();
-  strm_out.write(strm_in.read());
+  for (int i = 0; i < 26; ++i) {
+    bit32_t input = strm_in.read();
+    // std::cout << "dut input is " << input << "." << std::endl;
+    data_t input_cast;
+    input_cast = static_cast<data_t>(input);
+    // std::cout << "dut casted is " << input_cast << "." << std::endl;
+    strm_out.write(input);
+  }
+
   // printf("I AM NOW HERE!\n");
 
   // data_t input[N_INPUTS];
   // data_t mean_output;
   // data_t variance_output;
 
-  // // Read input data from stream
+  // Read input data from stream
   // for (int i = 0; i < N_INPUTS; i++)
   // {
-  //   input[i] = strm_in.read();
+  //   data_t inp;
+  //   bit32_t bit32_input = strm_in.read();
+  //   inp = static_cast<data_t>(bit32_input);
+  //   input[i] = inp;
   // }
 
   // // Call the MLP accelerator function
