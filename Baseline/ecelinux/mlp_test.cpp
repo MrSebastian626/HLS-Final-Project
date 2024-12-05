@@ -25,8 +25,10 @@ int main()
   outfile.open("out.dat");
 
   // HLS streams for communicating with the MLP block
-  hls::stream<data_t> mlp_in;
-  hls::stream<data_t> mlp_out;
+  //hls::stream<data_t> mlp_in;
+  //hls::stream<data_t> mlp_out;
+  hls::stream<bit32_t> mlp_in;
+  hls::stream<bit32_t> mlp_out;
 
   // Number of test instances
   const int N = x_num_rows; // Can change
@@ -44,8 +46,13 @@ int main()
   //--------------------------------------------------------------------
   for (int i = 0; i < N; ++i)
   {
-    for (int j = 0; j < x_num_cols; j++)
-      mlp_in.write(x_test[i][j]);
+    for (int j = 0; j < x_num_cols; j++) {
+      //mlp_in.write(x_test[i][j]);
+      bit32_t low = x_test[i][j].range(31, 0);  // Low 32 bits
+      bit32_t high = x_test[i][j].range(63, 32); // High 32 bits
+      mlp_in.write(low);
+      mlp_in.write(high);
+    }
   }
 
   //--------------------------------------------------------------------
@@ -57,8 +64,20 @@ int main()
     dut(mlp_in, mlp_out);
 
     // Read result
-    data_t mean = mlp_out.read();
-    data_t variance = mlp_out.read();
+    //data_t mean = mlp_out.read();
+    //data_t variance = mlp_out.read();
+    bit32_t mean_low = mlp_out.read();
+    bit32_t mean_high = mlp_out.read();
+    data_t mean;
+    mean.range(31, 0) = mean_low.range(31, 0);
+    mean.range(63, 32) = mean_high.range(31, 0);
+ //   std::cout << "mean: " << mean << std::endl;
+
+    bit32_t variance_low = mlp_out.read();
+    bit32_t variance_high = mlp_out.read();
+    data_t variance;
+    variance.range(31, 0) = variance_low.range(31, 0);
+    variance.range(63, 32) = variance_high.range(31, 0);
 
     num_test_insts++;
     avg_distance += int(abs(static_cast<float>(mean)-y_test[i]));
