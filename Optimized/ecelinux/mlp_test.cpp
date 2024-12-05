@@ -45,23 +45,27 @@ int main()
   for (int i = 0; i < N; ++i)
   {
     for (int j = 0; j < x_num_cols; j++)
-      if (j == 0 & i < 26) {
+      // if (j == 0 & i < 26) {
         mlp_in.write(x_test[i][j]);
-      }
+      // }
   }
 
   //--------------------------------------------------------------------
   // Execute the MLP sim and receive data
   //--------------------------------------------------------------------
-      // Call design under test (DUT)
-    dut(mlp_in, mlp_out);
-  for (int i = 0; i < 26; ++i)
+      
+
+  for (int i = 0; i < N; ++i)
   {
+    // Call design under test (DUT)
+    dut(mlp_in, mlp_out);
+
     // Read result
     bit32_t mean = mlp_out.read();
-    // data_t dev = mlp_out.read();
-    bit32_t dev = 3;
-    std::cout << "out from dut = " << mean << std::endl;
+    bit32_t dev = mlp_out.read();
+    // bit32_t dev = 3;
+
+    // std::cout << "out from dut = " << mean << std::endl;
     num_test_insts++;
     avg_distance += int(abs(static_cast<float>(mean)-y_test[i]));
     outfile << "Mean = " << mean << std::endl;

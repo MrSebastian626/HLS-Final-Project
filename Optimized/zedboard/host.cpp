@@ -49,9 +49,9 @@ int main(int argc, char **argv) {
     for (int j = 0; j < FEATURE_COUNT; j++) {
       bit32_t test_feature;
       test_feature = static_cast<bit32_t>(x_test[i][j]); // Convert to bit32_t
-      if (j == 0) {
-        std::cout << "input is " << test_feature << "." << std::endl;
-      }
+      // if (j == 0) {
+      //   std::cout << "input is " << test_feature << "." << std::endl;
+      // }
       //bit32_t sample = 4;
       // nbytes = write(fdw, (void *)&sample, sizeof(sample));
       // assert(nbytes == sizeof(sample));
@@ -61,31 +61,31 @@ int main(int argc, char **argv) {
   }
 
  for (int i = 0; i < TEST_SIZE; ++i) {
-    for (int j = 0; j< FEATURE_COUNT; j++) {
-      bit32_t output;
-      nbytes = read(fdr, (void *)&output, sizeof(output));
-      assert(nbytes == sizeof(output));
-      if (j == 0) {
-        std::cout << "output is " << output << "." << std::endl;
-      }
-    }
+    // for (int j = 0; j< FEATURE_COUNT; j++) {
+    //   bit32_t output;
+    //   nbytes = read(fdr, (void *)&output, sizeof(output));
+    //   assert(nbytes == sizeof(output));
+    //   if (j == 0) {
+    //     std::cout << "output is " << output << "." << std::endl;
+    //   }
+    // }
 
-    // bit32_t output_mean, output_variance;
-    // nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
-    // assert(nbytes == sizeof(output_mean));
-    // nbytes = read(fdr, (void *)&output_variance, sizeof(output_variance));
-    // assert(nbytes == sizeof(output_variance));
+    bit32_t output_mean, output_variance;
+    nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
+    assert(nbytes == sizeof(output_mean));
+    nbytes = read(fdr, (void *)&output_variance, sizeof(output_variance));
+    assert(nbytes == sizeof(output_variance));
 
-    // // Convert outputs to float
+    // Convert outputs to float
     // float predicted_mean = static_cast<float>(output_mean);
     // float predicted_variance = static_cast<float>(output_variance);
 
-    // // Validate mean output against ground truth
+    // Validate mean output against ground truth
     // if (abs(predicted_mean - y_test[i]) < 1e-2) {
     //   correct += 1.0;
     // }
 
-    // std::cout << "Sample " << i << " -> Predicted mean: " << predicted_mean << ", Predicted variance: " << predicted_variance << std::endl;
+    std::cout << "Sample " << i << " -> Predicted mean: " << output_mean << ", Predicted variance: " << output_variance << std::endl;
   }
 
   // Calculate accuracy

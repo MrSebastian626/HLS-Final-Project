@@ -16,39 +16,44 @@
 void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out)
 {
   // printf("I AM HERE!\n");
-  for (int i = 0; i < 26; ++i) {
-    bit32_t input = strm_in.read();
-    // std::cout << "dut input is " << input << "." << std::endl;
-    data_t input_cast;
-    input_cast = static_cast<data_t>(input);
-    // std::cout << "dut casted is " << input_cast << "." << std::endl;
-    strm_out.write(input);
-  }
+  // for (int i = 0; i < 26; ++i) {
+  //   bit32_t input = strm_in.read();
+  //   // std::cout << "dut input is " << input << "." << std::endl;
+  //   data_t input_cast;
+  //   input_cast = static_cast<data_t>(input);
+  //   // std::cout << "dut casted is " << input_cast << "." << std::endl;
+  //   strm_out.write(input);
+  // }
 
   // printf("I AM NOW HERE!\n");
 
-  // data_t input[N_INPUTS];
-  // data_t mean_output;
-  // data_t variance_output;
+  data_t input[N_INPUTS];
+  data_t mean_output;
+  data_t variance_output;
+  bit32_t mean_struct_output;
+  bit32_t variance_struct_output;
 
   // Read input data from stream
-  // for (int i = 0; i < N_INPUTS; i++)
-  // {
-  //   data_t inp;
-  //   bit32_t bit32_input = strm_in.read();
-  //   inp = static_cast<data_t>(bit32_input);
-  //   input[i] = inp;
-  // }
+  for (int i = 0; i < N_INPUTS; i++)
+  {
+    data_t inp;
+    bit32_t bit32_input = strm_in.read();
+    inp = static_cast<data_t>(bit32_input);
+    input[i] = inp;
+  }
 
-  // // Call the MLP accelerator function
-  // mlp_xcel(input, mean_output, variance_output);
+  // Call the MLP accelerator function
+  mlp_xcel(input, mean_output, variance_output);
 
-  // // Write outputs to stream
-  // MeanVariance mv;
-  // mv.mean = mean_output;
-  // mv.variance = variance_output;
-  // strm_out.write(mv.mean);
-  // strm_out.write(mv.variance);
+  // Write outputs to stream
+  mean_struct_output = static_cast<bit32_t>(mean_output);
+  variance_struct_output = static_cast<bit32_t>(variance_output);
+
+  MeanVariance mv;
+  mv.mean = mean_struct_output;
+  mv.variance = variance_struct_output;
+  strm_out.write(mv.mean);
+  strm_out.write(mv.variance);
 }
 
 
