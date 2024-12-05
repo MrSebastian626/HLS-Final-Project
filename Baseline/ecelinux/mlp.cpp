@@ -1,7 +1,7 @@
 //=========================================================================
-// cordic.cpp
+// mlp.cpp
 //=========================================================================
-// @brief : A CORDIC implementation of sine and cosine functions.
+// @brief : An MLP implementation.
 
 #include <hls_stream.h>
 #include <iostream>
@@ -13,7 +13,8 @@
 //-----------------------------------
 // @param[in]  : strm_in - input stream
 // @param[out] : strm_out - output stream
-void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
+//void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
+void dut(hls::stream<bit32_t> &strm_in, hls::stream<bit32_t> &strm_out)
 {
   data_t input[N_INPUTS];
   data_t mean_output;
@@ -22,7 +23,14 @@ void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
   // Read input data from stream
   for (int i = 0; i < N_INPUTS; i++)
   {
-    input[i] = strm_in.read();
+    //input[i] = strm_in.read();
+    bit32_t lower = strm_in.read();
+    bit32_t upper = strm_in.read();
+    input[i].range(31, 0) = lower.range(31, 0);
+    input[i].range(63, 32) = upper.range(31, 0);
+ //   std::cout << "input: " << static_cast<float>(input[i]) << std::endl;
+ //   long long raw_input_bytes = *(long long *)&input[i];
+ //   printf("Received input[%d] raw bytes (hex): 0x%016llx\n", i, raw_input_bytes);
   }
 
   // Call the MLP accelerator function
@@ -32,8 +40,22 @@ void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
   MeanVariance mv;
   mv.mean = mean_output;
   mv.variance = variance_output;
-  strm_out.write(mv.mean);
-  strm_out.write(mv.variance);
+  //strm_out.write(mv.mean);
+  //strm_out.write(mv.variance);
+  strm_out.write(mv.mean.range(31, 0));
+  strm_out.write(mv.mean.range(63, 32));
+  strm_out.write(mv.variance.range(31, 0));
+  strm_out.write(mv.variance.range(63, 32));
+
+ // std::cout << "output: " << static_cast<float>(mean_output) << std::endl;
+
+ // long long raw_mean_bytes = *(long long *)&mean_output;
+//  printf("Produced mean raw bytes (hex): 0x%016llx\n", raw_mean_bytes);
+
+  //std::cout << "alt output: " << static_cast<float>(mv.mean) << std::endl;
+
+//  long long raw_mean_bytes2 = *(long long *)&mv.mean;
+//  printf("alt mean raw bytes (hex): 0x%016llx\n", raw_mean_bytes2);
 }
 
 void mlp_xcel(data_t input[N_INPUTS], data_t &mean, data_t &variance)
