@@ -17,8 +17,10 @@ struct MeanVariance{
 
 // Top function for synthesis
 void dut (
-    hls::stream<data_t> &strm_in,
-    hls::stream<data_t> &strm_out
+  //hls::stream<data_t> &strm_in,
+  //hls::stream<data_t> &strm_out
+  hls::stream<bit32_t> &strm_in,
+  hls::stream<bit32_t> &strm_out
 );
 
 
