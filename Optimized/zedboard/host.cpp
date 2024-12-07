@@ -46,30 +46,37 @@ int main(int argc, char **argv) {
   for (int i = 0; i < TEST_SIZE; ++i) {
     // Send 32-bit values (one feature at a time) through the write channel
     for (int j = 0; j < FEATURE_COUNT; j++) {
-      bit32_t test_feature;
-      test_feature = static_cast<bit32_t>(x_test[i][j]); // Convert to bit32_t
-      nbytes = write(fdw, (void *)&test_feature, sizeof(test_feature));
-      assert(nbytes == sizeof(test_feature));
+      data_t test_feature;
+      test_feature = x_test[i][j];
+
+      long long raw_bits = *(long long *)&test_feature; // Cast to raw 64-bit representation
+      std::cout << "Sending to write channel: " << test_feature << " (raw bits: " << std::hex << raw_bits << ")" << std::dec << std::endl;
+
+      bit32_t data = test_feature.range(31, 0);
+      nbytes = write(fdw, (void *)&data, sizeof(data));
+      assert(nbytes == sizeof(data));    
     }
   }
 
   for (int i = 0; i < TEST_SIZE; ++i) {
-    bit32_t output_mean, output_variance;
-    nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
-    assert(nbytes == sizeof(output_mean));
-    nbytes = read(fdr, (void *)&output_variance, sizeof(output_variance));
-    assert(nbytes == sizeof(output_variance));
+    bit32_t result;
+    nbytes = read(fdr, (void *)&result, sizeof(result));
+    assert(nbytes == sizeof(result));
+    data_t output_mean;
+    output_mean.range(24, 0) = result.range(24, 0);
 
-    // Convert outputs to float
-    float predicted_mean = static_cast<float>(output_mean);
-    float predicted_variance = static_cast<float>(output_variance);
+    nbytes = read(fdr, (void *)&result, sizeof(result));
+    assert(nbytes == sizeof(result));
+    data_t output_variance;
+    output_variance.range(24, 0) = result.range(24, 0);
 
     // Validate mean output against ground truth
-    if (abs(predicted_mean - y_test[i]) < 1e-2) {
+    if (!(y_test[i] < (static_cast<float>(output_mean) - static_cast<float>(output_variance)) ||
+        y_test[i] > (static_cast<float>(output_mean) + static_cast<float>(output_variance)))) {
       correct += 1.0;
     }
 
-    std::cout << "Sample " << i << " -> Predicted mean: " << predicted_mean << ", Predicted variance: " << predicted_variance << std::endl;
+    // std::cout << "Sample " << i << " -> Predicted mean: " << output_mean << ", Predicted variance: " << output_variance << std::endl;
   }
 
   // Calculate accuracy
@@ -79,15 +86,15 @@ int main(int argc, char **argv) {
   // Run it 20 times to test performance
   //--------------------------------------------------------------------
   const int REPS = 20; // Number of repetitions
-  std::cout << "Testing performance over " << REPS * TEST_SIZE << " test samples." << std::endl;
+  std::cout << "Testing over " << REPS * TEST_SIZE << " test samples." << std::endl;
   timer.start();
 
   // Send data to accelerator (REPS times)
   for (int r = 0; r < REPS; r++) {
     for (int i = 0; i < TEST_SIZE; ++i) {
       for (int j = 0; j < FEATURE_COUNT; j++) {
-        bit32_t test_feature;
-        test_feature = static_cast<bit32_t>(x_test[i][j]);
+        data_t test_feature;
+        test_feature = x_test[i][j];
         nbytes = write(fdw, (void *)&test_feature, sizeof(test_feature));
         assert(nbytes == sizeof(test_feature));
       }
@@ -97,7 +104,7 @@ int main(int argc, char **argv) {
   // Receive data from the accelerator (REPS times)
   for (int r = 0; r < REPS; r++) {
     for (int i = 0; i < TEST_SIZE; ++i) {
-      bit32_t output_mean, output_variance;
+      data_t output_mean, output_variance;
       nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
       assert(nbytes == sizeof(output_mean));
       nbytes = read(fdr, (void *)&output_variance, sizeof(output_variance));
@@ -109,3 +116,4 @@ int main(int argc, char **argv) {
 
   return 0;
 }
+

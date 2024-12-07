@@ -1,0 +1,89 @@
+<AutoPilot:ProjectResources xmlns:AutoPilot="com.autoesl.autopilot.ui.directiveView">
+    <sourceFile name="">
+        <directive functionName="dense_lay" label="dense_inner" functionLabel="">
+            <pragma name="UNROLL">
+                <option name="factor" value="32"/>
+            </pragma>
+        </directive>
+        <directive functionName="dense_lay" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="input" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="mlp_xcel" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="w1" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="mlp_xcel" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="w2" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="mlp_xcel" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="w3" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="mlp_xcel" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="w4" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="mlp_xcel" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="w5" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="final" label="final_inner" functionLabel="">
+            <pragma name="UNROLL"/>
+        </directive>
+        <directive functionName="final" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="input" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="final" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="weight" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="relu" label="relu_outer" functionLabel="">
+            <pragma name="UNROLL"/>
+        </directive>
+        <directive functionName="relu" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="data" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="1"/>
+            </pragma>
+        </directive>
+        <directive functionName="generate_binary_matrix" label="gen_neur" functionLabel="">
+            <pragma name="UNROLL"/>
+        </directive>
+        <directive functionName="generate_binary_matrix" label="" functionLabel="">
+            <pragma name="ARRAY_PARTITION">
+                <option name="variable" value="matrix" positionalBoolean="4"/>
+                <option name="complete" value="" positionalBoolean="type"/>
+                <option name="dim" value="2"/>
+            </pragma>
+        </directive>
+    </sourceFile>
+</AutoPilot:ProjectResources>
+

@@ -1,0 +1,100 @@
+INFO-FLOW: Workspace /home/sjr275/HLS-Final-Project/Baseline/ecelinux/mlp.prj/solution1 opened at Sat Dec 07 15:59:12 EST 2024
+Command     open_solution done; 1.18 sec.
+Execute     set_part xc7z020clg484-1 
+Execute       ap_part_info -name xc7z020clg484-1 -data single -quiet 
+Command       ap_part_info done; 2.95 sec.
+Execute       ap_part_info -name xc7z020clg484-1 -data info 
+Execute       add_library xilinx/zynq/zynq:xc7z020:-clg484:-1 
+Execute         get_default_platform 
+Execute         open_platform DefaultPlatform 
+Execute         import_lib /opt/xilinx/Vivado/2019.2/common/technology/xilinx/zynq/zynq 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx.lib 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.lib 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/plb46.lib 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/fsl.lib 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/axi4.lib 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/maxi.lib 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/saxilite.lib 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/dsp48.lib 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/ip/xfft.lib 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/ip/xfir.lib 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.lib 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/zynq/dsp48e1.hlp 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute         source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/zynq/zynq.gen 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/plb46.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/fsl.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/axi4.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/nativeAXI4.gen 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/saxilite.gen 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/maxi.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/scripts/xilinxcoregen.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/XilEDKCoreGen.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/ip/dds_compiler.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/ip/util.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/ip/xfft.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/ip/xfir.gen 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/dsp48.gen 
+Command           ap_source done; 0.12 sec.
+Command         ap_source done; 0.12 sec.
+Execute         ap_part_info -data single -name xc7z020-clg484-1 
+Execute         ap_part_info -name xc7z020-clg484-1 -data resources 
+Execute         ap_part_info -name xc7z020-clg484-1 -data info 
+Execute         ap_part_info -name xc7z020-clg484-1 -data info 
+Execute         config_chip_info -quiet -resource {SLICE 13300} {LUT 53200} {FF 106400} {DSP48E 220} {BRAM 280} {URAM 0} 
+Execute         ap_part_info -name xc7z020-clg484-1 -data info 
+Execute         config_chip_info -quiet -speed slow 
+Command       add_library done; 0.2 sec.
+Execute       add_library xilinx/zynq/zynq_fpv6 
+Execute         get_default_platform 
+Execute         open_platform DefaultPlatform 
+Execute         import_lib /opt/xilinx/Vivado/2019.2/common/technology/xilinx/zynq/zynq_fpv6 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.lib 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.hlp 
+Execute             source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx.hlp 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/target_info.tcl 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/xilinx_interface.hlp 
+Execute                 source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/maxi.hlp 
+Execute                 source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/interface/saxilite.hlp 
+Execute               source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/dsp48.hlp 
+Execute         source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/zynq/zynq_fpv6.gen 
+Execute           source /opt/xilinx/Vivado/2019.2/common/technology/xilinx/common/xilinx_fp.gen 
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+Execute       ap_part_info -name xc7z020-clg484-1 -data info 
+Execute       get_default_platform 
+Command     set_part done; 3.24 sec.
+Execute     create_clock -period 10 -name default 
+Execute       config_clock -quiet -name default -period 10 -default=false 
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+Execute     csim_design -O 
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+Execute       is_encrypted /home/sjr275/HLS-Final-Project/Baseline/ecelinux/mlp_test.cpp 
+Execute       is_xip /home/sjr275/HLS-Final-Project/Baseline/ecelinux/mlp_test.cpp 
+Execute       is_encrypted /home/sjr275/HLS-Final-Project/Baseline/ecelinux/mlp.cpp 
+Execute       is_xip /home/sjr275/HLS-Final-Project/Baseline/ecelinux/mlp.cpp 
+Execute       ap_part_info -name xc7z020-clg484-1 -data info 
+Execute       source run_sim.tcl 
+Command       ap_source done; 32.33 sec.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+Command     csim_design done; 41.18 sec.
+Execute     cosim_design 
+ERROR: [COSIM 212-40] C/RTL co-simulation cannot be started, possible causes: 1) Synthesis was not successful; 2) The solution has been reset; 3) Simulation is not running in the solution directory.
+ERROR: [COSIM 212-5] *** C/RTL co-simulation file generation failed. ***
+ERROR: [COSIM 212-4] *** C/RTL co-simulation finished: FAIL ***
+Command     cosim_design done; error code: 2; 
+Command   ap_source done; error code: 1; 45.82 sec.
+Execute   cleanup_all 

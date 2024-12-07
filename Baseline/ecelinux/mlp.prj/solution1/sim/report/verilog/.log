@@ -1,0 +1,3 @@
+ERROR: [COSIM-40] C/RTL co-simulation cannot be started, possible causes: 1) Synthesis was not successful; 2) The solution has been reset; 3) Simulation is not running in the solution directory.
+ERROR: [COSIM-5] *** C/RTL co-simulation file generation failed. ***
+ERROR: [COSIM-4] *** C/RTL co-simulation finished: FAIL ***

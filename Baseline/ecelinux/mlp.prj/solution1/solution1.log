@@ -1,0 +1,297 @@
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================
+INFO: [HLS 200-10] Setting target device to 'xc7z020-clg484-1'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [SCHED 204-61] Option 'relax_ii_for_timing' is enabled, will increase II to preserve clock frequency constraints.
+INFO: [HLS 200-10] Analyzing design file 'mlp.cpp' ... 
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:48 ; elapsed = 00:00:50 . Memory (MB): peak = 1168.148 ; gain = 530.125 ; free physical = 2097 ; free virtual = 12352
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:48 ; elapsed = 00:00:50 . Memory (MB): peak = 1168.148 ; gain = 530.125 ; free physical = 2097 ; free virtual = 12352
+INFO: [HLS 200-10] Starting code transformations ...
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:51 ; elapsed = 00:00:53 . Memory (MB): peak = 1172.148 ; gain = 534.125 ; free physical = 2021 ; free virtual = 12285
+INFO: [HLS 200-10] Checking synthesizability ...
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'generate_binary_matrix<100, 64>' (./layer.h:73) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'generate_binary_matrix<100, 32>' (./layer.h:73) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'generate_binary_matrix<100, 16>' (./layer.h:73) automatically.
+INFO: [XFORM 203-602] Inlining function 'relu<64>' into 'mlp_xcel' (mlp.cpp:65) automatically.
+INFO: [XFORM 203-602] Inlining function 'apply_dropout<64>' into 'mlp_xcel' (mlp.cpp:66) automatically.
+INFO: [XFORM 203-602] Inlining function 'relu<32>' into 'mlp_xcel' (mlp.cpp:69) automatically.
+INFO: [XFORM 203-602] Inlining function 'apply_dropout<32>' into 'mlp_xcel' (mlp.cpp:70) automatically.
+INFO: [XFORM 203-602] Inlining function 'relu<16>' into 'mlp_xcel' (mlp.cpp:81) automatically.
+INFO: [XFORM 203-602] Inlining function 'calculate_mean' into 'mlp_xcel' (mlp.cpp:84) automatically.
+INFO: [XFORM 203-602] Inlining function 'calculate_variance' into 'mlp_xcel' (mlp.cpp:85) automatically.
+WARNING: [SYNCHK 200-120] ./layer.h:65: multiplication is assumed not to overflow by default, otherwise, please add option '-fwrapv'.
+INFO: [SYNCHK 200-10] 0 error(s), 1 warning(s).
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 1172.148 ; gain = 534.125 ; free physical = 1996 ; free virtual = 12263
+INFO: [XFORM 203-502] Unrolling small iteration loop 'Loop-1' (./layer.h:18) in function 'dense<16, 1>' automatically.
+INFO: [HLS 200-489] Unrolling loop 'Loop-1' (./layer.h:18) in function 'dense<16, 1>' completely with a factor of 1.
+INFO: [XFORM 203-102] Partitioning array 'dense4.V' (mlp.cpp:57) automatically.
+INFO: [XFORM 203-102] Partitioning array 'w5.V' in dimension 2 automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::mantissa' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:15) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::expv' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:18) automatically.
+INFO: [XFORM 203-602] Inlining function 'fp_struct<float>::__signbit' into 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:59) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, (ap_q_mode)6, float>' into 'generic_cast_IEEE754<int, float>' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/include/FloatingPoint/hls_case_IEEE754.h:117) automatically.
+INFO: [XFORM 203-602] Inlining function 'generic_cast_IEEE754<int, float>' into '__hls_fptosi_float_i32' (/wrk/2019.2/continuous/2019_11_06_2708876/src/products/hls/hls_lib/hlsmath/src/lib_floatconversion.cpp:51) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'generate_binary_matrix<100, 64>' (./layer.h:73) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'generate_binary_matrix<100, 32>' (./layer.h:73) automatically.
+INFO: [XFORM 203-602] Inlining function '__hls_fptosi_float_i32' into 'generate_binary_matrix<100, 16>' (./layer.h:73) automatically.
+INFO: [XFORM 203-602] Inlining function 'relu<64>' into 'mlp_xcel' (mlp.cpp:65) automatically.
+INFO: [XFORM 203-602] Inlining function 'apply_dropout<64>' into 'mlp_xcel' (mlp.cpp:66) automatically.
+INFO: [XFORM 203-602] Inlining function 'relu<32>' into 'mlp_xcel' (mlp.cpp:69) automatically.
+INFO: [XFORM 203-602] Inlining function 'apply_dropout<32>' into 'mlp_xcel' (mlp.cpp:70) automatically.
+INFO: [XFORM 203-602] Inlining function 'relu<16>' into 'mlp_xcel' (mlp.cpp:81) automatically.
+INFO: [XFORM 203-602] Inlining function 'calculate_mean' into 'mlp_xcel' (mlp.cpp:84) automatically.
+INFO: [XFORM 203-602] Inlining function 'calculate_variance' into 'mlp_xcel' (mlp.cpp:85) automatically.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (./layer.h:46:5) to (./layer.h:44:29) in function 'mlp_xcel'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (./layer.h:46:5) to (./layer.h:44:29) in function 'mlp_xcel'... converting 3 basic blocks.
+INFO: [XFORM 203-401] Performing if-conversion on hyperblock from (./layer.h:46:5) to (./layer.h:44:29) in function 'apply_dropout<16>'... converting 3 basic blocks.
+INFO: [XFORM 203-602] Inlining function 'apply_dropout<16>' into 'mlp_xcel' (mlp.cpp:74) automatically.
+INFO: [XFORM 203-11] Balancing expressions in function 'generate_binary_matrix<100, 64>' (./layer.h:71)...3 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'generate_binary_matrix<100, 32>' (./layer.h:71)...3 expression(s) balanced.
+INFO: [XFORM 203-11] Balancing expressions in function 'generate_binary_matrix<100, 16>' (./layer.h:71)...3 expression(s) balanced.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:54 ; elapsed = 00:00:57 . Memory (MB): peak = 1296.148 ; gain = 658.125 ; free physical = 1929 ; free virtual = 12203
+WARNING: [XFORM 203-631] Renaming function 'generate_binary_matrix<100, 64>' to 'generate_binary_matr' (./layer.h:78:34)
+WARNING: [XFORM 203-631] Renaming function 'generate_binary_matrix<100, 32>' to 'generate_binary_matr.1' (./layer.h:78:34)
+WARNING: [XFORM 203-631] Renaming function 'generate_binary_matrix<100, 16>' to 'generate_binary_matr.2' (./layer.h:15:34)
+INFO: [HLS 200-472] Inferring partial write operation for 'data.V' (./layer.h:36:7)
+INFO: [HLS 200-472] Inferring partial write operation for 'dense0.V' (./layer.h:36:7)
+INFO: [HLS 200-472] Inferring partial write operation for 'dropout0.V' (./layer.h:46:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'dense1.V' (./layer.h:36:7)
+INFO: [HLS 200-472] Inferring partial write operation for 'dropout1.V' (./layer.h:46:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'dropout2.V' (./layer.h:46:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'dropout3.V' (./layer.h:46:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'outputs.V' (mlp.cpp:82:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'matrix' (./layer.h:90:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'matrix' (./layer.h:95:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'matrix' (./layer.h:90:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'matrix' (./layer.h:95:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'matrix' (./layer.h:90:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'matrix' (./layer.h:95:9)
+INFO: [HLS 200-472] Inferring partial write operation for 'input.V' (mlp.cpp:25:16)
+INFO: [HLS 200-472] Inferring partial write operation for 'output.V' (./layer.h:25:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'output.V' (./layer.h:25:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'output.V' (./layer.h:25:5)
+INFO: [HLS 200-472] Inferring partial write operation for 'output.V' (./layer.h:25:5)
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:55 ; elapsed = 00:00:57 . Memory (MB): peak = 1296.148 ; gain = 658.125 ; free physical = 1833 ; free virtual = 12109
+INFO: [HLS 200-10] Starting hardware synthesis ...
+INFO: [HLS 200-10] Synthesizing 'dut' ...
+WARNING: [SYN 201-103] Legalizing function name 'generate_binary_matr.1' to 'generate_binary_matr_1'.
+WARNING: [SYN 201-103] Legalizing function name 'generate_binary_matr.2' to 'generate_binary_matr_2'.
+WARNING: [SYN 201-103] Legalizing function name 'dense<9, 64>' to 'dense_9_64_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense<64, 32>' to 'dense_64_32_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense<32, 16>' to 'dense_32_16_s'.
+WARNING: [SYN 201-103] Legalizing function name 'relu<16>.1' to 'relu_16_1'.
+WARNING: [SYN 201-103] Legalizing function name 'dense<16, 16>' to 'dense_16_16_s'.
+WARNING: [SYN 201-103] Legalizing function name 'dense<16, 1>' to 'dense_16_1_s'.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'generate_binary_matr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 57.46 seconds; current allocated memory: 356.412 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.05 seconds; current allocated memory: 356.628 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'generate_binary_matr_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.07 seconds; current allocated memory: 356.809 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.05 seconds; current allocated memory: 357.003 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'generate_binary_matr_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.09 seconds; current allocated memory: 357.386 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 357.701 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_9_64_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 358.016 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.06 seconds; current allocated memory: 358.197 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_64_32_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 358.369 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.06 seconds; current allocated memory: 358.550 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 358.685 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.05 seconds; current allocated memory: 358.867 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'relu_16_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.07 seconds; current allocated memory: 358.984 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.03 seconds; current allocated memory: 359.054 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_16_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.05 seconds; current allocated memory: 359.187 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.07 seconds; current allocated memory: 359.367 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dense_16_1_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.08 seconds; current allocated memory: 359.504 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.04 seconds; current allocated memory: 359.621 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'mlp_xcel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 360.274 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.37 seconds; current allocated memory: 361.281 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-42] -- Implementing module 'dut' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-11] Finished scheduling.
+INFO: [HLS 200-111]  Elapsed time: 0.35 seconds; current allocated memory: 361.612 MB.
+INFO: [BIND 205-100] Starting micro-architecture generation ...
+INFO: [BIND 205-101] Performing variable lifetime analysis.
+INFO: [BIND 205-101] Exploring resource sharing.
+INFO: [BIND 205-101] Binding ...
+INFO: [BIND 205-100] Finished micro-architecture generation.
+INFO: [HLS 200-111]  Elapsed time: 0.09 seconds; current allocated memory: 361.790 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'generate_binary_matr' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'generate_binary_matr'.
+INFO: [HLS 200-111]  Elapsed time: 0.17 seconds; current allocated memory: 362.223 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'generate_binary_matr_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'generate_binary_matr_1'.
+INFO: [HLS 200-111]  Elapsed time: 0.11 seconds; current allocated memory: 363.441 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'generate_binary_matr_2' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_fmul_32ns_32ns_32_4_max_dsp_1' to 'dut_fmul_32ns_32nbkb' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_fmul_32ns_32nbkb': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'generate_binary_matr_2'.
+INFO: [HLS 200-111]  Elapsed time: 0.12 seconds; current allocated memory: 364.786 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_9_64_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_mul_64s_37s_96_5_1' to 'dut_mul_64s_37s_9cud' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mul_64s_37s_9cud': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_9_64_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.2 seconds; current allocated memory: 366.540 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_64_32_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Generating core module 'dut_mul_64s_37s_9cud': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_64_32_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.13 seconds; current allocated memory: 367.604 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_32_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_mul_64s_35s_96_5_1' to 'dut_mul_64s_35s_9dEe' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mul_64s_35s_9dEe': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_32_16_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.14 seconds; current allocated memory: 368.658 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'relu_16_1' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [RTGEN 206-100] Finished creating RTL model for 'relu_16_1'.
+INFO: [HLS 200-111]  Elapsed time: 0.13 seconds; current allocated memory: 369.488 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_16_16_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_mul_64s_36s_96_5_1' to 'dut_mul_64s_36s_9eOg' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mul_64s_36s_9eOg': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_16_16_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.1 seconds; current allocated memory: 370.107 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'dense_16_1_s' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [SYN 201-210] Renamed object name 'dut_mul_34s_64s_96_5_1' to 'dut_mul_34s_64s_9fYi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mul_34s_64s_9fYi': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'dense_16_1_s'.
+INFO: [HLS 200-111]  Elapsed time: 0.15 seconds; current allocated memory: 371.071 MB.
+INFO: [HLS 200-10] ----------------------------------------------------------------
+INFO: [HLS 200-10] -- Generating RTL for module 'mlp_xcel' 
+INFO: [HLS 200-10] ----------------------------------------------------------------
+WARNING: [RTGEN 206-101] Register 'global_lfsr_seed_V' is power-on initialization.
+INFO: [SYN 201-210] Renamed object name 'dut_mul_64s_66ns_129_5_1' to 'dut_mul_64s_66ns_g8j' due to the length limit 20
+INFO: [SYN 201-210] Renamed object name 'dut_mul_65s_65s_96_5_1' to 'dut_mul_65s_65s_9hbi' due to the length limit 20
+INFO: [RTGEN 206-100] Generating core module 'dut_mul_64s_66ns_g8j': 2 instance(s).
+INFO: [RTGEN 206-100] Generating core module 'dut_mul_65s_65s_9hbi': 1 instance(s).
+INFO: [RTGEN 206-100] Finished creating RTL model for 'mlp_xcel'.
+INFO: [HLS 200-111]  Elapsed time: 0.21 seconds; current allocated memory: 373.534 MB.
+==============================================================
+Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+==============================================================

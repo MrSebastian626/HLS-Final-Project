@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Messages>
+	<Message severity="ERROR" prefix="[COSIM 212-40]" key="COSIM_TCL_40_1108" tag="" content="C/RTL co-simulation cannot be started, possible causes: 1) Synthesis was not successful; 2) The solution has been reset; 3) Simulation is not running in the solution directory."/>
+	<Message severity="ERROR" prefix="[COSIM 212-5]" key="COSIM_TCL_5_1075" tag="" content="*** C/RTL co-simulation file generation failed. ***"/>
+	<Message severity="ERROR" prefix="[COSIM 212-4]" key="COSIM_TCL_4_1074" tag="" content="*** C/RTL co-simulation finished: FAIL ***"/>
+</Messages>
