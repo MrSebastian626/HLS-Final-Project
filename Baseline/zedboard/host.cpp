@@ -108,8 +108,12 @@ int main(int argc, char **argv) {
       for (int j = 0; j < FEATURE_COUNT; j++) {
         data_t test_feature;
         test_feature = x_test[i][j];
-        nbytes = write(fdw, (void *)&test_feature, sizeof(test_feature));
-        assert(nbytes == sizeof(test_feature));
+        bit32_t lower = test_feature.range(31, 0);
+        bit32_t upper = test_feature.range(63, 32);
+        nbytes = write(fdw, (void *)&lower, sizeof(lower));
+        assert(nbytes == sizeof(lower));
+        nbytes = write(fdw, (void *)&upper, sizeof(upper));
+        assert(nbytes == sizeof(upper));
       }
     }
   }
@@ -117,11 +121,22 @@ int main(int argc, char **argv) {
   // Receive data from the accelerator (REPS times)
   for (int r = 0; r < REPS; r++) {
     for (int i = 0; i < TEST_SIZE; ++i) {
-      data_t output_mean, output_variance;
-      nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
-      assert(nbytes == sizeof(output_mean));
-      nbytes = read(fdr, (void *)&output_variance, sizeof(output_variance));
-      assert(nbytes == sizeof(output_variance));
+      bit32_t low, high;
+      nbytes = read(fdr, (void *)&low, sizeof(low));
+      assert(nbytes == sizeof(low));
+      nbytes = read(fdr, (void *)&high, sizeof(high));
+      assert(nbytes == sizeof(high));
+      data_t output_mean;
+      output_mean.range(31, 0) = low.range(31, 0);
+      output_mean.range(63, 32) = high.range(31, 0);
+
+      nbytes = read(fdr, (void *)&low, sizeof(low));
+      assert(nbytes == sizeof(low));
+      nbytes = read(fdr, (void *)&high, sizeof(high));
+      assert(nbytes == sizeof(high));
+      data_t output_variance;
+      output_variance.range(31, 0) = low.range(31, 0);
+      output_variance.range(63, 32) = high.range(31, 0);
     }
   }
 
@@ -129,4 +144,3 @@ int main(int argc, char **argv) {
 
   return 0;
 }
-
