@@ -47,14 +47,14 @@ int main(int argc, char **argv) {
     // Send 32-bit values (one feature at a time) through the write channel
     for (int j = 0; j < FEATURE_COUNT; j++) {
       bit32_t test_feature;
-      test_feature = static_cast<bit32_t>(x_test[i][j]); // Convert to bit32_t
+      test_feature = static_cast<bit32_t>(x_test[i][j] & 0x1FFFFFF); // Convert to bit32_t
       nbytes = write(fdw, (void *)&test_feature, sizeof(test_feature));
       assert(nbytes == sizeof(test_feature));
     }
   }
 
   for (int i = 0; i < TEST_SIZE; ++i) {
-    bit32_t output_mean, output_variance;
+    data_t output_mean, output_variance;
     nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
     assert(nbytes == sizeof(output_mean));
     nbytes = read(fdr, (void *)&output_variance, sizeof(output_variance));
@@ -65,8 +65,8 @@ int main(int argc, char **argv) {
     float predicted_variance = static_cast<float>(output_variance);
 
     // Validate mean output against ground truth
-    if (!(y_test[i] < predicted_mean - sqrt(predicted_variance)) ||
-        y_test[i] > (predicted_mean + sqrt(predicted_variance))) {
+    if (!(y_test[i] < predicted_mean - predicted_variance) ||
+        y_test[i] > (predicted_mean + predicted_variance)) {
       correct += 1.0;
     }
 
@@ -98,7 +98,7 @@ int main(int argc, char **argv) {
   // Receive data from the accelerator (REPS times)
   for (int r = 0; r < REPS; r++) {
     for (int i = 0; i < TEST_SIZE; ++i) {
-      bit32_t output_mean, output_variance;
+      data_t output_mean, output_variance;
       nbytes = read(fdr, (void *)&output_mean, sizeof(output_mean));
       assert(nbytes == sizeof(output_mean));
       nbytes = read(fdr, (void *)&output_variance, sizeof(output_variance));
