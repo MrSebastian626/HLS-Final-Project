@@ -59,6 +59,7 @@ int main()
     // Read result
     data_t mean = mlp_out.read();
     data_t dev = mlp_out.read();
+    //std::cout << "mean: " << mean << std::endl;
 
     num_test_insts++;
     avg_distance += int(abs(static_cast<float>(mean)-y_test[i]));
