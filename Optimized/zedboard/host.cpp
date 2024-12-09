@@ -46,8 +46,7 @@ int main(int argc, char **argv) {
   for (int i = 0; i < TEST_SIZE; ++i) {
     // Send 32-bit values (one feature at a time) through the write channel
     for (int j = 0; j < FEATURE_COUNT; j++) {
-      bit32_t test_feature;
-      test_feature = static_cast<bit32_t>(x_test[i][j] & 0x1FFFFFF); // Convert to bit32_t
+      data_t test_feature = x_test[i][j];
       nbytes = write(fdw, (void *)&test_feature, sizeof(test_feature));
       assert(nbytes == sizeof(test_feature));
     }
@@ -65,16 +64,16 @@ int main(int argc, char **argv) {
     float predicted_variance = static_cast<float>(output_variance);
 
     // Validate mean output against ground truth
-    if (!(y_test[i] < predicted_mean - predicted_variance) ||
-        y_test[i] > (predicted_mean + predicted_variance)) {
+    if (!((y_test[i] < predicted_mean - predicted_variance) ||
+        y_test[i] > (predicted_mean + predicted_variance))) {
       correct += 1.0;
     }
 
-    std::cout << "Sample " << i << " -> Predicted mean: " << predicted_mean << ", Predicted variance: " << predicted_variance << std::endl;
+    std::cout << "Sample " << i << " -> Predicted mean: " << predicted_mean << ", Predicted variance: " << predicted_variance << ", Ground Truth: " << y_test[i] << std::endl;
   }
 
   // Calculate accuracy
-  std::cout << "Accuracy: " << (correct / TEST_SIZE) * 100.0 << "%" << std::endl;
+  // std::cout << "Accuracy: " << (correct / TEST_SIZE) * 100.0 << "%" << std::endl;
 
   //--------------------------------------------------------------------
   // Run it 20 times to test performance
@@ -87,8 +86,8 @@ int main(int argc, char **argv) {
   for (int r = 0; r < REPS; r++) {
     for (int i = 0; i < TEST_SIZE; ++i) {
       for (int j = 0; j < FEATURE_COUNT; j++) {
-        bit32_t test_feature;
-        test_feature = static_cast<bit32_t>(x_test[i][j]);
+        data_t test_feature;
+        test_feature = x_test[i][j];
         nbytes = write(fdw, (void *)&test_feature, sizeof(test_feature));
         assert(nbytes == sizeof(test_feature));
       }
