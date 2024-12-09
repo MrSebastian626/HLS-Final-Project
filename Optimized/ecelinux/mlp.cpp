@@ -1,7 +1,7 @@
 //=========================================================================
-// cordic.cpp
+// mlp.cpp
 //=========================================================================
-// @brief : A CORDIC implementation of sine and cosine functions.
+// @brief : An MLP implementation.
 
 #include <hls_stream.h>
 #include <iostream>
@@ -23,6 +23,9 @@ void dut(hls::stream<data_t> &strm_in, hls::stream<data_t> &strm_out)
   for (int i = 0; i < N_INPUTS; i++)
   {
     input[i] = strm_in.read();
+   // std::cout << "input: " << static_cast<float>(input[i]) << std::endl;
+  //  long long raw_input_bytes = *(long long *)&input[i];
+    //printf("Received input[%d] raw bytes (hex): 0x%016llx\n", i, raw_input_bytes);
   }
 
   // Call the MLP accelerator function
